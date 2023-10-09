@@ -1,0 +1,3007 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="45">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>13</ID>
+      <Description>"Contact Information"</Description>
+      <Options moHideChildren="1"/>
+      <Color>000080</Color>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>14</ID>
+          <Description>"Discord Server:                         https://discord.gg/SQvYfBa"</Description>
+          <Color>000080</Color>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>15</ID>
+          <Description>"Fearless Revolution:                  https://fearlessrevolution.com/viewtopic.php?p=161301#p161301"</Description>
+          <Color>000080</Color>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>16</ID>
+          <Description>"Patreon Page:                           https://www.patreon.com/Akira_Fudo"</Description>
+          <Color>000080</Color>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>0</ID>
+      <Description>"Game Information"</Description>
+      <Options moHideChildren="1"/>
+      <Color>000080</Color>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>1</ID>
+          <Description>"Deep Rock Galactic: Survivor:    0.2.42"</Description>
+          <Color>000080</Color>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>4</ID>
+          <Description>"Game Engine:                            Unity (il2cpp)"</Description>
+          <Color>000080</Color>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>7</ID>
+          <Description>"Game Process:                           DRG Survivor.exe"</Description>
+          <Color>000080</Color>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>5</ID>
+          <Description>"Game Module:                           Assembly-CSharp.dll"</Description>
+          <Color>000080</Color>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>2</ID>
+          <Description>"Platform:                                    Steam"</Description>
+          <Color>000080</Color>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>6</ID>
+          <Description>"Steam App ID:                           2321470"</Description>
+          <Color>000080</Color>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>3</ID>
+          <Description>"Steam Page:                               https://store.steampowered.com/app/2321470/Deep_Rock_Galactic_Survivor/"</Description>
+          <Color>000080</Color>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>8</ID>
+      <Description>"Table Information"</Description>
+      <Options moHideChildren="1"/>
+      <Color>000080</Color>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>9</ID>
+          <Description>"Cheat Table:                              1.0"</Description>
+          <Color>000080</Color>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>10</ID>
+          <Description>"Cheat Engine:                            7.5"</Description>
+          <Color>000080</Color>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>11</ID>
+          <Description>"Table Autor:                               Akira Fudo"</Description>
+          <Color>000080</Color>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>12</ID>
+          <Description>"Table Post:                                 https://fearlessrevolution.com/viewtopic.php?p=161301#p161301"</Description>
+          <Color>000080</Color>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>17</ID>
+      <Description>"Activation"</Description>
+      <Options moHideChildren="1"/>
+      <Color>0000FF</Color>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript Async="1">{$LUA}
+[ENABLE]
+if syntaxcheck then return end
+local al = getAddressList()
+local pl = getProcessList()
+if (getCEVersion() == 7.5) then
+   if pl[getProcessIDFromProcessName("DRG Survivor.exe")] ~= nil then
+      openProcess("DRG Survivor.exe")
+      sleep(10)
+      LaunchMonoDataCollector()
+      sleep(1000)
+      local CoordinatesSave = allocateMemory(1)
+      registerSymbol("CoordinatesSave", CoordinatesSave)
+      local TeleportToCoords = allocateMemory(1)
+      registerSymbol("TeleportToCoords", TeleportToCoords)
+
+      MetaManager_Ptr = getExStaticFieldAddress('MetaManager', 'instance', 'DRS.Meta')
+      statUpgradeCollection_Offset = getClassOffsets('MetaManager', 'statUpgradeCollection')
+      saveDataManager_Offset = getClassOffsets('MetaManager', 'saveDataManager')
+      Version_Offset = getClassOffsets('SaveData', 'Version')
+      MetaStatUpgrades_Offset = getClassOffsets('SaveData', 'MetaStatUpgrades')
+      MileStoneStates_Offset = getClassOffsets('SaveData', 'MileStoneStates')
+      UnlockedWeaponIds_Offset = getClassOffsets('SaveData', 'UnlockedWeaponIds')
+      UnlockedArtifactIds_Offset = getClassOffsets('SaveData', 'UnlockedArtifactIds')
+      UnlockedClassArtifactIds_Offset = getClassOffsets('SaveData', 'UnlockedClassArtifactIds')
+      OverclockUnlockedWeaponIds_Offset = getClassOffsets('SaveData', 'OverclockUnlockedWeaponIds')
+      BiomeGoalPoints_Offset = getClassOffsets('SaveData', 'BiomeGoalPoints')
+      Credits_Offset = getClassOffsets('SaveData', 'Credits')
+      Bismor_Offset = getClassOffsets('SaveData', 'Bismor')
+      Croppa_Offset = getClassOffsets('SaveData', 'Croppa')
+      EnorPearl_Offset = getClassOffsets('SaveData', 'EnorPearl')
+      Jadiz_Offset = getClassOffsets('SaveData', 'Jadiz')
+      Magnite_Offset = getClassOffsets('SaveData', 'Magnite')
+      Umanite_Offset = getClassOffsets('SaveData', 'Umanite')
+      ActiveLoadout_Offset = getClassOffsets('SaveData', 'ActiveLoadout')
+      LoadOuts_Offset = getClassOffsets('SaveData', 'LoadOuts')
+      ClassRanks_Offset = getClassOffsets('SaveData', 'ClassRanks')
+      PlayerRank_Offset = getClassOffsets('SaveData', 'PlayerRank')
+      TotalClassLevels_Offset = getClassOffsets('SaveData', 'TotalClassLevels')
+      NumDivesTotal_Offset = getClassOffsets('SaveData', 'NumDivesTotal')
+      MasterVolumeSetting_Offset = getClassOffsets('SaveData', 'MasterVolumeSetting')
+      MusicVolumeSetting_Offset = getClassOffsets('SaveData', 'MusicVolumeSetting')
+      SFXVolumeSetting_Offset = getClassOffsets('SaveData', 'SFXVolumeSetting')
+      MinimapUnlocked_Offset = getClassOffsets('SaveData', 'MinimapUnlocked')
+      SecondaryObjectivesUnlocked_Offset = getClassOffsets('SaveData', 'SecondaryObjectivesUnlocked')
+
+      UIManager_Ptr = getExStaticFieldAddress('UIManager', 'instance')
+      gameController_Offset = getClassOffsets('UIManager', 'gameController')
+      debugArtifacts_Offset = getClassOffsets('GameController', 'debugArtifacts')
+      objectiveTracker_Offset = getClassOffsets('GameController', 'objectiveTracker')
+      dropPod_Offset = getClassOffsets('GameController', 'dropPod')
+      supplyPod_Offset = getClassOffsets('GameController', 'supplyPod')
+      uiCam_Offset = getClassOffsets('GameController', 'uiCam')
+      secondsInLevel_Offset = getClassOffsets('GameController', 'secondsInLevel')
+      timeInLevelProgress_Offset = getClassOffsets('GameController', 'timeInLevelProgress')
+      pauseCount_Offset = getClassOffsets('GameController', 'pauseCount')
+      timeScaleCoroutine_Offset = getClassOffsets('GameController', 'timeScaleCoroutine')
+      totalRunTime_Offset = getClassOffsets('GameController', 'totalRunTime')
+      uiManager_Offset = getClassOffsets('GameController', 'uiManager')
+      audioManager_Offset = getClassOffsets('GameController', 'audioManager')
+      cameraController_Offset = getClassOffsets('GameController', 'cameraController')
+      coroutineRunner_Offset = getClassOffsets('GameController', 'coroutineRunner')
+      enemySpawner_Offset = getClassOffsets('GameController', 'enemySpawner')
+      skillCollectionManager_Offset = getClassOffsets('GameController', 'skillCollectionManager')
+      pickupSpawner_Offset = getClassOffsets('GameController', 'pickupSpawner')
+      mapGenerator_Offset = getClassOffsets('GameController', 'mapGenerator')
+      player_Offset = getClassOffsets('GameController', 'player')
+      targetPointer_Offset = getClassOffsets('GameController', 'targetPointer')
+      runSettingsManager_Offset = getClassOffsets('GameController', 'runSettingsManager')
+      saveDataManager2_Offset = getClassOffsets('GameController', 'saveDataManager')
+      dropRateHandler_Offset = getClassOffsets('GameController', 'dropRateHandler')
+      runStateManager_Offset = getClassOffsets('GameController', 'runStateManager')
+--[[
+      DebugConsole_Ptr = getExStaticFieldAddress('DebugConsole', 'Instance', 'TheForest')
+      CameraManager_Ptr = getFValues('CameraManager', 'Current')
+      blockConsole_Offset = getClassOffsets('DebugConsole', '_blockConsole', 'TheForest')
+      writeUserSymbols('PlayerCharacterMasterController','_instances','instanceList_Ptr')
+      ServerBindAddress_Offset                        = getClassOffsets('SROptions', '&lt;ServerBindAddress&gt;k__BackingField')
+      camMinDistance_Offset                        = getClassOffsets('GameCamera', 'm_minDistance')
+]]
+   else
+      print("Game is not running!")
+   end
+else
+   print("It is required to use CE 7.5!")
+end
+
+[DISABLE]
+if syntaxcheck then return end
+if monopipe then monopipe.destroy();monopipe=nil end
+deAlloc(getAddress("CoordinatesSave"))
+deAlloc(getAddress("TeleportToCoords"))
+unregisterSymbol("CoordinatesSave")
+unregisterSymbol("CoordinatesSave")
+</AssemblerScript>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>18</ID>
+          <Description>"Scripts"</Description>
+          <Options moHideChildren="1"/>
+          <Color>D2FF00</Color>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>1337169440</ID>
+              <Description>"God Mode"</Description>
+              <Color>000080</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>{$LUA}
+[ENABLE]
+if syntaxcheck then return end
+writeBytes('Player.TakeDamage', 0xC3, 0x90)
+memrec.Color = scriptColorActivated
+[DISABLE]
+if syntaxcheck then return end
+writeBytes('Player.TakeDamage', 0x40, 0x53)
+memrec.Color = scriptColorDeactivated
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1337169448</ID>
+              <Description>"Inf. Bullets"</Description>
+              <Color>000080</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>{$LUA}
+--[[
+  Game Executable   : DRG Survivor.exe
+  Executable Version: 2022.3.7.27451
+  Module Version    : 
+  Script Date       : 29/09/2023
+  Author 			: Akira Fudo
+
+ProjectileWeaponHandler.ActivationLogic+BA
+GameAssembly.dll.il2cpp+8CEEA
+8B 83 74 01 00 00 48
+8B 83 ? ? ? ? 48 8B ? ? ? ? ? 2B C1
+8B ?? ?? ?? ?? ?? 48 8B ?? ?? ?? ?? ?? 2B ?? 89
+]]
+
+[ENABLE]
+if syntaxcheck then return end
+local AoB    = "8B ?? ?? ?? ?? ?? 48 8B ?? ?? ?? ?? ?? 2B ?? 89"
+local Start  = "ProjectileWeaponHandler.ActivationLogic+70"
+local End    = "ProjectileWeaponHandler.ActivationLogic+F0"
+local Unique = false
+local Scan   = aobScanEx(Start, End, AoB, Unique)
+registerSymbol("bulletsLeft_AoB", Scan[0] .. "", true)
+bulletsLeft_Backup = readBytes('bulletsLeft_AoB', 15, true)
+local baseClipSizeOffset = readByte("bulletsLeft_AoB+2") + 0x04
+writeBytes('bulletsLeft_AoB+2', baseClipSizeOffset)
+writeBytes('bulletsLeft_AoB+D', 0x90, 0x90)
+memrec.Color = scriptColorActivated
+[DISABLE]
+if syntaxcheck then return end
+writeBytes('bulletsLeft_AoB', bulletsLeft_Backup)
+unregisterSymbol('bulletsLeft_AoB')
+bulletsLeft_Backup = nil
+memrec.Color = scriptColorDeactivated
+
+--[[
+GameAssembly.dll.il2cpp+8CE8E: 84 C0                    - test al,al
+GameAssembly.dll.il2cpp+8CE90: 74 C9                    - je GameAssembly.dll.il2cpp+8CE5B
+GameAssembly.dll.il2cpp+8CE92: 48 8B 13                 - mov rdx,[rbx]
+GameAssembly.dll.il2cpp+8CE95: 48 8B CB                 - mov rcx,rbx
+GameAssembly.dll.il2cpp+8CE98: 48 8B 82 58 02 00 00     - mov rax,[rdx+00000258]
+GameAssembly.dll.il2cpp+8CE9F: 48 8B 92 60 02 00 00     - mov rdx,[rdx+00000260]
+GameAssembly.dll.il2cpp+8CEA6: FF D0                    - call rax
+GameAssembly.dll.il2cpp+8CEA8: 84 C0                    - test al,al
+GameAssembly.dll.il2cpp+8CEAA: 74 AF                    - je GameAssembly.dll.il2cpp+8CE5B
+GameAssembly.dll.il2cpp+8CEAC: 48 8B 83 88 01 00 00     - mov rax,[rbx+00000188]
+GameAssembly.dll.il2cpp+8CEB3: 48 85 C0                 - test rax,rax
+GameAssembly.dll.il2cpp+8CEB6: 0F 84 85 00 00 00        - je GameAssembly.dll.il2cpp+8CF41
+GameAssembly.dll.il2cpp+8CEBC: 83 BB B0 01 00 00 01     - cmp dword ptr [rbx+000001B0],01
+GameAssembly.dll.il2cpp+8CEC3: F3 0F 10 80 D8 00 00 00  - movss xmm0,[rax+000000D8]
+GameAssembly.dll.il2cpp+8CECB: F3 0F 58 83 70 01 00 00  - addss xmm0,[rbx+00000170]
+GameAssembly.dll.il2cpp+8CED3: F3 0F 11 83 70 01 00 00  - movss [rbx+00000170],xmm0
+GameAssembly.dll.il2cpp+8CEDB: 75 08                    - jne GameAssembly.dll.il2cpp+8CEE5
+GameAssembly.dll.il2cpp+8CEDD: 8B 8B B4 01 00 00        - mov ecx,[rbx+000001B4]
+GameAssembly.dll.il2cpp+8CEE3: EB 05                    - jmp GameAssembly.dll.il2cpp+8CEEA
+GameAssembly.dll.il2cpp+8CEE5: B9 01 00 00 00           - mov ecx,00000001
+// ---------- INJECTING HERE ----------
+GameAssembly.dll.il2cpp+8CEEA: 8B 83 74 01 00 00        - mov eax,[rbx+00000174]
+// ---------- DONE INJECTING  ----------
+GameAssembly.dll.il2cpp+8CEF0: 48 8B 93 B0 00 00 00     - mov rdx,[rbx+000000B0]
+GameAssembly.dll.il2cpp+8CEF7: 2B C1                    - sub eax,ecx
+GameAssembly.dll.il2cpp+8CEF9: 89 83 74 01 00 00        - mov [rbx+00000174],eax
+GameAssembly.dll.il2cpp+8CEFF: 48 85 D2                 - test rdx,rdx
+GameAssembly.dll.il2cpp+8CF02: 74 21                    - je GameAssembly.dll.il2cpp+8CF25
+GameAssembly.dll.il2cpp+8CF04: 66 0F 6E 83 80 01 00 00  - movd xmm0,[rbx+00000180]
+GameAssembly.dll.il2cpp+8CF0C: 4C 8B 42 28              - mov r8,[rdx+28]
+GameAssembly.dll.il2cpp+8CF10: 48 8B 4A 40              - mov rcx,[rdx+40]
+GameAssembly.dll.il2cpp+8CF14: 66 0F 6E C8              - movd xmm1,eax
+GameAssembly.dll.il2cpp+8CF18: 0F 5B C9                 - cvtdq2ps xmm1,xmm1
+GameAssembly.dll.il2cpp+8CF1B: 0F 5B C0                 - cvtdq2ps xmm0,xmm0
+GameAssembly.dll.il2cpp+8CF1E: F3 0F 5E C8              - divss xmm1,xmm0
+GameAssembly.dll.il2cpp+8CF22: FF 52 18                 - call qword ptr [rdx+18]
+GameAssembly.dll.il2cpp+8CF25: 83 BB 74 01 00 00 01     - cmp dword ptr [rbx+00000174],01
+GameAssembly.dll.il2cpp+8CF2C: 0F 8D 29 FF FF FF        - jnl GameAssembly.dll.il2cpp+8CE5B
+GameAssembly.dll.il2cpp+8CF32: 33 D2                    - xor edx,edx
+GameAssembly.dll.il2cpp+8CF34: 48 8B CB                 - mov rcx,rbx
+GameAssembly.dll.il2cpp+8CF37: 48 83 C4 20              - add rsp,20
+GameAssembly.dll.il2cpp+8CF3B: 5B                       - pop rbx
+GameAssembly.dll.il2cpp+8CF3C: E9 0F C6 01 00           - jmp WeaponHandler.Reload
+]]
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1337169449</ID>
+              <Description>"Rapid Fire"</Description>
+              <Color>000080</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>{$LUA}
+[ENABLE]
+if syntaxcheck then return end
+writeBytes('ProjectileWeaponHandler.OnBulletCooldown+0D', 0x0F, 0x57, 0xC0, 0x90)
+memrec.Color = scriptColorActivated
+[DISABLE]
+if syntaxcheck then return end
+writeBytes('ProjectileWeaponHandler.OnBulletCooldown+0D', 0xF3, 0x0F, 0x5C, 0xC1)
+memrec.Color = scriptColorDeactivated
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1337169441</ID>
+              <Description>"Instant Mining"</Description>
+              <Color>000080</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>{$LUA}
+--[[
+  Game Executable   : DRG Survivor.exe
+  Executable Version: 2022.3.7.27451
+  Module Version    : 
+  Script Date       : 29/09/2023
+  Author 			: Akira Fudo
+
+Player:nextMiningTime
+
+Player.TryMine+2BA
+GameAssembly.dll.il2cpp+6E80A
+F3 0F 11 8B EC 00 00 00
+F3 0F ? ? ? ? ? ? 41 3B ? ? 0F 8D
+F3 ?? ?? ?? ?? ?? ?? ?? 41 3B ?? ?? 0F 8D ?? ?? ?? ?? 41 3B ?? ?? 0F 83 ?? ?? ?? ?? 48 63 ?? 4D
+]]
+
+[ENABLE]
+if syntaxcheck then return end
+local AoB    = "F3 ?? ?? ?? ?? ?? ?? ?? 41 3B ?? ?? 0F 8D ?? ?? ?? ?? 41 3B ?? ?? 0F 83 ?? ?? ?? ?? 48 63 ?? 4D"
+local Start  = "Player.TryMine+2BA-A0"
+local End    = "Player.TryMine+2BA+A0"
+local Unique = false
+local Scan   = aobScanEx(Start, End, AoB, Unique)
+registerSymbol("nextMiningTime_AoB", Scan[0] .. "-4", true)
+nextMiningTime_Backup = readBytes('nextMiningTime_AoB', 4, true)
+writeBytes('nextMiningTime_AoB', 0x0F, 0x57, 0xC9, 0x90)
+memrec.Color = scriptColorActivated
+[DISABLE]
+if syntaxcheck then return end
+writeBytes('nextMiningTime_AoB', nextMiningTime_Backup)
+unregisterSymbol('nextMiningTime_AoB')
+nextMiningTime_Backup = nil
+memrec.Color = scriptColorDeactivated
+
+--[[
+GameAssembly.dll.il2cpp+6E7BC: 48 8B B4 24 18 01 00 00  - mov rsi,[rsp+00000118]
+GameAssembly.dll.il2cpp+6E7C4: 48 81 C4 F0 00 00 00     - add rsp,000000F0
+GameAssembly.dll.il2cpp+6E7CB: 41 5C                    - pop r12
+GameAssembly.dll.il2cpp+6E7CD: 5B                       - pop rbx
+GameAssembly.dll.il2cpp+6E7CE: 5D                       - pop rbp
+GameAssembly.dll.il2cpp+6E7CF: C3                       - ret 
+GameAssembly.dll.il2cpp+6E7D0: 33 C9                    - xor ecx,ecx
+GameAssembly.dll.il2cpp+6E7D2: E8 59 3D 02 02           - call UnityEngine.Time.get_time
+GameAssembly.dll.il2cpp+6E7D7: 48 8B 83 B0 01 00 00     - mov rax,[rbx+000001B0]
+GameAssembly.dll.il2cpp+6E7DE: 48 85 C0                 - test rax,rax
+GameAssembly.dll.il2cpp+6E7E1: 0F 84 36 02 00 00        - je GameAssembly.dll.il2cpp+6EA1D
+GameAssembly.dll.il2cpp+6E7E7: F3 0F 10 8B E4 00 00 00  - movss xmm1,[rbx+000000E4]
+GameAssembly.dll.il2cpp+6E7EF: 45 32 ED                 - xor r13b,r13b
+GameAssembly.dll.il2cpp+6E7F2: F3 0F 5E 48 28           - divss xmm1,[rax+28]
+GameAssembly.dll.il2cpp+6E7F7: 32 C9                    - xor cl,cl
+GameAssembly.dll.il2cpp+6E7F9: 44 89 65 77              - mov [rbp+77],r12d
+GameAssembly.dll.il2cpp+6E7FD: 88 4D 67                 - mov [rbp+67],cl
+GameAssembly.dll.il2cpp+6E800: 41 8B F4                 - mov esi,r12d
+GameAssembly.dll.il2cpp+6E803: 41 8B C4                 - mov eax,r12d
+GameAssembly.dll.il2cpp+6E806: F3 0F 58 C8              - addss xmm1,xmm0
+// ---------- INJECTING HERE ----------
+GameAssembly.dll.il2cpp+6E80A: F3 0F 11 8B EC 00 00 00  - movss [rbx+000000EC],xmm1
+// ---------- DONE INJECTING  ----------
+GameAssembly.dll.il2cpp+6E812: 41 3B 47 18              - cmp eax,[r15+18]
+GameAssembly.dll.il2cpp+6E816: 0F 8D B9 01 00 00        - jnl GameAssembly.dll.il2cpp+6E9D5
+GameAssembly.dll.il2cpp+6E81C: 41 3B 77 18              - cmp esi,[r15+18]
+GameAssembly.dll.il2cpp+6E820: 0F 83 0F 02 00 00        - jae GameAssembly.dll.il2cpp+6EA35
+GameAssembly.dll.il2cpp+6E826: 48 63 C6                 - movsxd  rax,esi
+GameAssembly.dll.il2cpp+6E829: 4D 8B 74 C7 20           - mov r14,[r15+rax*8+20]
+GameAssembly.dll.il2cpp+6E82E: 4D 85 F6                 - test r14,r14
+GameAssembly.dll.il2cpp+6E831: 0F 84 E6 01 00 00        - je GameAssembly.dll.il2cpp+6EA1D
+GameAssembly.dll.il2cpp+6E837: 4C 8B 05 62 60 DD 02     - mov r8,[GameAssembly.dll.data+DD8A0]
+GameAssembly.dll.il2cpp+6E83E: 48 8D 55 7F              - lea rdx,[rbp+7F]
+GameAssembly.dll.il2cpp+6E842: 49 8B CE                 - mov rcx,r14
+GameAssembly.dll.il2cpp+6E845: E8 E6 35 32 00           - call GameAssembly.dll.il2cpp+391E30
+GameAssembly.dll.il2cpp+6E84A: 84 C0                    - test al,al
+GameAssembly.dll.il2cpp+6E84C: 0F 84 32 01 00 00        - je GameAssembly.dll.il2cpp+6E984
+GameAssembly.dll.il2cpp+6E852: 4C 8B 45 7F              - mov r8,[rbp+7F]
+GameAssembly.dll.il2cpp+6E856: 4D 85 C0                 - test r8,r8
+GameAssembly.dll.il2cpp+6E859: 0F 84 BE 01 00 00        - je GameAssembly.dll.il2cpp+6EA1D
+GameAssembly.dll.il2cpp+6E85F: 48 8B 15 CA 16 DA 02     - mov rdx,[GameAssembly.dll.data+A8F30]
+GameAssembly.dll.il2cpp+6E866: 33 C9                    - xor ecx,ecx
+GameAssembly.dll.il2cpp+6E868: E8 03 B8 BA FF           - call GameAssembly.il2cpp_class_get_static_field_data+600
+]]
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1337169443</ID>
+              <Description>"Instant Level Up"</Description>
+              <Color>000080</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>{$LUA}
+--[[
+  Game Executable   : DRG Survivor.exe
+  Executable Version: 2022.3.7.27451
+  Module Version    : 
+  Script Date       : 29/09/2023
+  Author 			: Akira Fudo
+
+Player:currentXp
+Player:totalXp
+
+Player.GainXp+65
+GameAssembly.dll.il2cpp+6A7E5
+F3 0F 58 86 08 01 00 00
+F3 0F ? ? ? ? ? ? F3 0F ? ? ? ? ? ? F3 0F ? ? ? ? ? ? F3 0F ? ? ? ? ? ? 48 85
+F3 ?? ?? ?? ?? ?? ?? ?? F3 ?? ?? ?? ?? ?? ?? ?? F3 ?? ?? ?? ?? ?? ?? ?? F3 ?? ?? ?? ?? ?? ?? ?? 48 85
+]]
+
+[ENABLE]
+if syntaxcheck then return end
+local AoB    = "F3 0F ? ? ? ? ? ? F3 0F ? ? ? ? ? ? F3 0F ? ? ? ? ? ? F3 0F ? ? ? ? ? ? 48 85"
+local Start  = "Player.GainXp+20"
+local End    = "Player.GainXp+B0"
+local Unique = false
+local Scan   = aobScanEx(Start, End, AoB, Unique)
+registerSymbol("currentXp_AoB", Scan[0] .. "", true)
+currentXp_Backup = readBytes('currentXp_AoB', 8, true)
+local totalXpOffset = readByte("currentXp_AoB+4") + 0x04
+-- F3 0F 58 86 08 01 00 00 - addss xmm0,[rsi+00000108]
+-- F3 0F 10 86 0C 01 00 00 - movss xmm0,[rsi+0000010C]
+writeBytes('currentXp_AoB+2', 0x10)
+writeBytes('currentXp_AoB+4', totalXpOffset)
+memrec.Color = scriptColorActivated
+[DISABLE]
+if syntaxcheck then return end
+writeBytes('currentXp_AoB', currentXp_Backup)
+unregisterSymbol('currentXp_AoB')
+currentXp_Backup = nil
+memrec.Color = scriptColorDeactivated
+
+--[[
+GameAssembly.dll.il2cpp+6A782: 48 83 EC 50              - sub rsp,50
+GameAssembly.dll.il2cpp+6A786: 80 3D B9 32 FD 02 00     - cmp byte ptr [GameAssembly.dll+3426A46],00
+GameAssembly.dll.il2cpp+6A78D: 48 8B F1                 - mov rsi,rcx
+GameAssembly.dll.il2cpp+6A790: 0F 29 7C 24 30           - movaps [rsp+30],xmm7
+GameAssembly.dll.il2cpp+6A795: 0F 28 F9                 - movaps xmm7,xmm1
+GameAssembly.dll.il2cpp+6A798: 75 1F                    - jne GameAssembly.dll.il2cpp+6A7B9
+GameAssembly.dll.il2cpp+6A79A: 48 8D 0D 8F E9 DC 02     - lea rcx,[GameAssembly.dll.data+D2130]
+GameAssembly.dll.il2cpp+6A7A1: E8 CA 90 F2 FF           - call GameAssembly.dll.text+37B870
+GameAssembly.dll.il2cpp+6A7A6: 48 8D 0D 3B F0 DC 02     - lea rcx,[GameAssembly.dll.data+D27E8]
+GameAssembly.dll.il2cpp+6A7AD: E8 BE 90 F2 FF           - call GameAssembly.dll.text+37B870
+GameAssembly.dll.il2cpp+6A7B2: C6 05 8D 32 FD 02 01     - mov byte ptr [GameAssembly.dll+3426A46],01
+GameAssembly.dll.il2cpp+6A7B9: 48 8B 86 B8 01 00 00     - mov rax,[rsi+000001B8]
+GameAssembly.dll.il2cpp+6A7C0: 48 89 5C 24 60           - mov [rsp+60],rbx
+GameAssembly.dll.il2cpp+6A7C5: 48 89 7C 24 68           - mov [rsp+68],rdi
+GameAssembly.dll.il2cpp+6A7CA: 48 85 C0                 - test rax,rax
+GameAssembly.dll.il2cpp+6A7CD: 0F 84 E4 01 00 00        - je GameAssembly.dll.il2cpp+6A9B7
+GameAssembly.dll.il2cpp+6A7D3: F3 0F 59 78 28           - mulss xmm7,[rax+28]
+GameAssembly.dll.il2cpp+6A7D8: 48 8B 8E 08 02 00 00     - mov rcx,[rsi+00000208]
+GameAssembly.dll.il2cpp+6A7DF: 0F 28 C7                 - movaps xmm0,xmm7
+GameAssembly.dll.il2cpp+6A7E2: 0F 28 CF                 - movaps xmm1,xmm7
+// ---------- INJECTING HERE ----------
+GameAssembly.dll.il2cpp+6A7E5: F3 0F 58 86 08 01 00 00  - addss xmm0,[rsi+00000108]
+// ---------- DONE INJECTING  ----------
+GameAssembly.dll.il2cpp+6A7ED: F3 0F 58 8E 0C 01 00 00  - addss xmm1,[rsi+0000010C]
+GameAssembly.dll.il2cpp+6A7F5: F3 0F 11 86 08 01 00 00  - movss [rsi+00000108],xmm0
+GameAssembly.dll.il2cpp+6A7FD: F3 0F 11 8E 0C 01 00 00  - movss [rsi+0000010C],xmm1
+GameAssembly.dll.il2cpp+6A805: 48 85 C9                 - test rcx,rcx
+GameAssembly.dll.il2cpp+6A808: 0F 84 A9 01 00 00        - je GameAssembly.dll.il2cpp+6A9B7
+GameAssembly.dll.il2cpp+6A80E: 33 D2                    - xor edx,edx
+GameAssembly.dll.il2cpp+6A810: E8 1B 20 09 00           - call DRS.Audio.SFXManager.PlayXpPickup
+GameAssembly.dll.il2cpp+6A815: 48 8B 86 00 01 00 00     - mov rax,[rsi+00000100]
+GameAssembly.dll.il2cpp+6A81C: 48 85 C0                 - test rax,rax
+GameAssembly.dll.il2cpp+6A81F: 0F 84 92 01 00 00        - je GameAssembly.dll.il2cpp+6A9B7
+GameAssembly.dll.il2cpp+6A825: 8B 40 18                 - mov eax,[rax+18]
+GameAssembly.dll.il2cpp+6A828: 39 86 10 01 00 00        - cmp [rsi+00000110],eax
+GameAssembly.dll.il2cpp+6A82E: 7D 1D                    - jnl GameAssembly.dll.il2cpp+6A84D
+GameAssembly.dll.il2cpp+6A830: 48 8B BE 00 01 00 00     - mov rdi,[rsi+00000100]
+GameAssembly.dll.il2cpp+6A837: 48 63 86 10 01 00 00     - movsxd  rax,dword ptr [rsi+00000110]
+GameAssembly.dll.il2cpp+6A83E: 3B 47 18                 - cmp eax,[rdi+18]
+GameAssembly.dll.il2cpp+6A841: 0F 83 76 01 00 00        - jae GameAssembly.dll.il2cpp+6A9BD
+GameAssembly.dll.il2cpp+6A847: 8B 7C 87 20              - mov edi,[rdi+rax*4+20]
+GameAssembly.dll.il2cpp+6A84B: EB 1B                    - jmp GameAssembly.dll.il2cpp+6A868
+GameAssembly.dll.il2cpp+6A84D: 48 8B 86 00 01 00 00     - mov rax,[rsi+00000100]
+]]
+</AssemblerScript>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>19</ID>
+          <Description>"Pointer"</Description>
+          <Options moHideChildren="1"/>
+          <Color>D2FF00</Color>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>21</ID>
+              <Description>"MetaManager"</Description>
+              <Options moHideChildren="1"/>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <Color>D2FF00</Color>
+              <GroupHeader>1</GroupHeader>
+              <Address>MetaManager_Ptr</Address>
+              <Offsets>
+                <Offset>0</Offset>
+              </Offsets>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>22</ID>
+                  <Description>"m_CachedPtr"</Description>
+                  <Color>104FED</Color>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>+0010</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>23</ID>
+                  <Description>"m_CancellationTokenSource"</Description>
+                  <Options moHideChildren="1"/>
+                  <ShowAsHex>1</ShowAsHex>
+                  <Color>D2FF00</Color>
+                  <GroupHeader>1</GroupHeader>
+                  <Address>+0018</Address>
+                  <Offsets>
+                    <Offset>0</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>24</ID>
+                  <Description>"statUpgradeCollection"</Description>
+                  <Options moHideChildren="1"/>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <Color>D2FF00</Color>
+                  <GroupHeader>1</GroupHeader>
+                  <Address>+statUpgradeCollection_Offset</Address>
+                  <Offsets>
+                    <Offset>0</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>25</ID>
+                  <Description>"saveDataManager"</Description>
+                  <Options moHideChildren="1"/>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <Color>0000FF</Color>
+                  <GroupHeader>1</GroupHeader>
+                  <Address>+saveDataManager_Offset</Address>
+                  <Offsets>
+                    <Offset>0</Offset>
+                  </Offsets>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>27</ID>
+                      <Description>"doDebug"</Description>
+                      <Color>104FED</Color>
+                      <VariableType>Byte</VariableType>
+                      <Address>+0010</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>28</ID>
+                      <Description>"saveData"</Description>
+                      <Options moHideChildren="1"/>
+                      <ShowAsHex>1</ShowAsHex>
+                      <Color>0000FF</Color>
+                      <GroupHeader>1</GroupHeader>
+                      <Address>+0018</Address>
+                      <Offsets>
+                        <Offset>0</Offset>
+                      </Offsets>
+                      <CheatEntries>
+                        <CheatEntry>
+                          <ID>35</ID>
+                          <Description>"Version"</Description>
+                          <ShowAsSigned>0</ShowAsSigned>
+                          <Color>104FED</Color>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>+Version_Offset</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>36</ID>
+                          <Description>"MetaStatUpgrades"</Description>
+                          <Options moHideChildren="1"/>
+                          <ShowAsHex>1</ShowAsHex>
+                          <ShowAsSigned>0</ShowAsSigned>
+                          <Color>0000FF</Color>
+                          <GroupHeader>1</GroupHeader>
+                          <Address>+MetaStatUpgrades_Offset</Address>
+                          <Offsets>
+                            <Offset>0</Offset>
+                          </Offsets>
+                          <CheatEntries>
+                            <CheatEntry>
+                              <ID>62</ID>
+                              <Description>"MetaStatUpgrades[Items]"</Description>
+                              <ShowAsHex>1</ShowAsHex>
+                              <ShowAsSigned>0</ShowAsSigned>
+                              <Color>D2FF00</Color>
+                              <GroupHeader>1</GroupHeader>
+                              <Address>+0010</Address>
+                              <Offsets>
+                                <Offset>20</Offset>
+                              </Offsets>
+                              <CheatEntries>
+                                <CheatEntry>
+                                  <ID>1337169267</ID>
+                                  <Description>"Next Stat"</Description>
+                                  <Color>000080</Color>
+                                  <VariableType>Auto Assembler Script</VariableType>
+                                  <AssemblerScript>{$LUA}
+[ENABLE]
+if syntaxcheck then return end
+local al = getAddressList()
+if al ~= nil then
+   local MemoryRecord  = al.getMemoryRecordByDescription("MetaStatUpgrades[Size]")
+   if MemoryRecord ~= nil then
+      local ItemArraySize = MemoryRecord.Value --tonumber(MemoryRecord.Value)
+      local offsetToSet   = 0x08
+      local maxOffset     = 0x08 * ItemArraySize + 0x20
+      local mr = al.getMemoryRecordByDescription("MetaStatUpgrades[Items]")
+      if mr ~= nil then
+         local oc = mr.OffsetCount
+         local endOffset = oc
+         mr.Offset[oc-endOffset] = mr.Offset[oc-endOffset] + offsetToSet
+         if mr.Offset[oc-endOffset] == maxOffset then
+            mr.Offset[oc-endOffset] = 0x20
+         end
+      end
+   end
+end
+createTimer(10, function() memrec.Active = false end)
+[DISABLE]
+if syntaxcheck then return end
+</AssemblerScript>
+                                </CheatEntry>
+                                <CheatEntry>
+                                  <ID>1337169268</ID>
+                                  <Description>"Previous Stat"</Description>
+                                  <Color>000080</Color>
+                                  <VariableType>Auto Assembler Script</VariableType>
+                                  <AssemblerScript>{$LUA}
+[ENABLE]
+if syntaxcheck then return end
+local al = getAddressList()
+local mr = al.getMemoryRecordByDescription("MetaStatUpgrades[Items]")
+local MemoryRecord = al.getMemoryRecordByDescription("MetaStatUpgrades[Size]")
+--if mr == nil then return end
+if mr ~= nil and MemoryRecord ~= nil then
+   local ItemArraySize = MemoryRecord.Value --tonumber(MemoryRecord.Value)
+   local offsetToSet   = 0x08
+   local maxOffset     = 0x08 * ItemArraySize + 0x20
+   local oc = mr.OffsetCount
+   local endOffset = oc
+   if mr.Offset[oc-endOffset] ~= 0x20 then
+      mr.Offset[oc-endOffset] = mr.Offset[oc-endOffset] - offsetToSet
+   else
+      mr.Offset[oc-endOffset] = maxOffset - offsetToSet
+   end
+end
+createTimer(10, function() memrec.Active = false end)
+[DISABLE]
+if syntaxcheck then return end
+</AssemblerScript>
+                                </CheatEntry>
+                                <CheatEntry>
+                                  <ID>66</ID>
+                                  <Description>"MetaStatUpgradeSaveData"</Description>
+                                  <ShowAsHex>1</ShowAsHex>
+                                  <ShowAsSigned>0</ShowAsSigned>
+                                  <Color>D2FF00</Color>
+                                  <GroupHeader>1</GroupHeader>
+                                  <Address>+00</Address>
+                                  <Offsets>
+                                    <Offset>0</Offset>
+                                  </Offsets>
+                                  <CheatEntries>
+                                    <CheatEntry>
+                                      <ID>69</ID>
+                                      <Description>"Id"</Description>
+                                      <ShowAsHex>1</ShowAsHex>
+                                      <ShowAsSigned>0</ShowAsSigned>
+                                      <Color>D2FF00</Color>
+                                      <GroupHeader>1</GroupHeader>
+                                      <Address>+10</Address>
+                                      <Offsets>
+                                        <Offset>0</Offset>
+                                      </Offsets>
+                                      <CheatEntries>
+                                        <CheatEntry>
+                                          <ID>70</ID>
+                                          <Description>"Length"</Description>
+                                          <ShowAsSigned>0</ShowAsSigned>
+                                          <Color>104FED</Color>
+                                          <VariableType>4 Bytes</VariableType>
+                                          <Address>+10</Address>
+                                        </CheatEntry>
+                                        <CheatEntry>
+                                          <ID>71</ID>
+                                          <Description>"Value"</Description>
+                                          <ShowAsSigned>0</ShowAsSigned>
+                                          <Color>104FED</Color>
+                                          <VariableType>String</VariableType>
+                                          <Length>255</Length>
+                                          <Unicode>1</Unicode>
+                                          <CodePage>0</CodePage>
+                                          <ZeroTerminate>1</ZeroTerminate>
+                                          <Address>+14</Address>
+                                        </CheatEntry>
+                                      </CheatEntries>
+                                    </CheatEntry>
+                                    <CheatEntry>
+                                      <ID>67</ID>
+                                      <Description>"Level"</Description>
+                                      <ShowAsSigned>0</ShowAsSigned>
+                                      <Color>104FED</Color>
+                                      <VariableType>4 Bytes</VariableType>
+                                      <Address>+18</Address>
+                                    </CheatEntry>
+                                  </CheatEntries>
+                                </CheatEntry>
+                              </CheatEntries>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>63</ID>
+                              <Description>"MetaStatUpgrades[Size]"</Description>
+                              <Color>104FED</Color>
+                              <VariableType>4 Bytes</VariableType>
+                              <Address>+0018</Address>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>64</ID>
+                              <Description>"_version"</Description>
+                              <Color>104FED</Color>
+                              <VariableType>4 Bytes</VariableType>
+                              <Address>+001C</Address>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>65</ID>
+                              <Description>"_syncRoot"</Description>
+                              <Color>104FED</Color>
+                              <VariableType>4 Bytes</VariableType>
+                              <Address>+0020</Address>
+                            </CheatEntry>
+                          </CheatEntries>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>37</ID>
+                          <Description>"MileStoneStates"</Description>
+                          <Options moHideChildren="1"/>
+                          <ShowAsHex>1</ShowAsHex>
+                          <ShowAsSigned>0</ShowAsSigned>
+                          <Color>D2FF00</Color>
+                          <GroupHeader>1</GroupHeader>
+                          <Address>+MileStoneStates_Offset</Address>
+                          <Offsets>
+                            <Offset>0</Offset>
+                          </Offsets>
+                          <CheatEntries>
+                            <CheatEntry>
+                              <ID>1337169270</ID>
+                              <Description>"_items"</Description>
+                              <Options moHideChildren="1"/>
+                              <ShowAsHex>1</ShowAsHex>
+                              <Color>D2FF00</Color>
+                              <GroupHeader>1</GroupHeader>
+                              <Address>+0010</Address>
+                              <Offsets>
+                                <Offset>0</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>1337169271</ID>
+                              <Description>"_size"</Description>
+                              <Color>104FED</Color>
+                              <VariableType>4 Bytes</VariableType>
+                              <Address>+0018</Address>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>1337169272</ID>
+                              <Description>"_version"</Description>
+                              <Color>104FED</Color>
+                              <VariableType>4 Bytes</VariableType>
+                              <Address>+001C</Address>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>1337169273</ID>
+                              <Description>"_syncRoot"</Description>
+                              <Color>104FED</Color>
+                              <VariableType>4 Bytes</VariableType>
+                              <Address>+0020</Address>
+                            </CheatEntry>
+                          </CheatEntries>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>38</ID>
+                          <Description>"UnlockedWeaponIds"</Description>
+                          <Options moHideChildren="1"/>
+                          <ShowAsHex>1</ShowAsHex>
+                          <ShowAsSigned>0</ShowAsSigned>
+                          <Color>D2FF00</Color>
+                          <GroupHeader>1</GroupHeader>
+                          <Address>+UnlockedWeaponIds_Offset</Address>
+                          <Offsets>
+                            <Offset>0</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>39</ID>
+                          <Description>"UnlockedArtifactIds"</Description>
+                          <Options moHideChildren="1"/>
+                          <ShowAsHex>1</ShowAsHex>
+                          <ShowAsSigned>0</ShowAsSigned>
+                          <Color>D2FF00</Color>
+                          <GroupHeader>1</GroupHeader>
+                          <Address>+UnlockedArtifactIds_Offset</Address>
+                          <Offsets>
+                            <Offset>0</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>40</ID>
+                          <Description>"UnlockedClassArtifactIds"</Description>
+                          <Options moHideChildren="1"/>
+                          <ShowAsHex>1</ShowAsHex>
+                          <ShowAsSigned>0</ShowAsSigned>
+                          <Color>D2FF00</Color>
+                          <GroupHeader>1</GroupHeader>
+                          <Address>+UnlockedClassArtifactIds_Offset</Address>
+                          <Offsets>
+                            <Offset>0</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>41</ID>
+                          <Description>"OverclockUnlockedWeaponIds"</Description>
+                          <Options moHideChildren="1"/>
+                          <ShowAsHex>1</ShowAsHex>
+                          <ShowAsSigned>0</ShowAsSigned>
+                          <Color>D2FF00</Color>
+                          <GroupHeader>1</GroupHeader>
+                          <Address>+OverclockUnlockedWeaponIds_Offset</Address>
+                          <Offsets>
+                            <Offset>0</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>42</ID>
+                          <Description>"BiomeGoalPoints"</Description>
+                          <ShowAsSigned>0</ShowAsSigned>
+                          <Color>104FED</Color>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>+BiomeGoalPoints_Offset</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>43</ID>
+                          <Description>"Credits"</Description>
+                          <ShowAsSigned>0</ShowAsSigned>
+                          <Color>104FED</Color>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>+Credits_Offset</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>44</ID>
+                          <Description>"Bismor"</Description>
+                          <ShowAsSigned>0</ShowAsSigned>
+                          <Color>104FED</Color>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>+Bismor_Offset</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>45</ID>
+                          <Description>"Croppa"</Description>
+                          <ShowAsSigned>0</ShowAsSigned>
+                          <Color>104FED</Color>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>+Croppa_Offset</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>46</ID>
+                          <Description>"EnorPearl"</Description>
+                          <ShowAsSigned>0</ShowAsSigned>
+                          <Color>104FED</Color>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>+EnorPearl_Offset</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>47</ID>
+                          <Description>"Jadiz"</Description>
+                          <ShowAsSigned>0</ShowAsSigned>
+                          <Color>104FED</Color>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>+Jadiz_Offset</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>48</ID>
+                          <Description>"Magnite"</Description>
+                          <ShowAsSigned>0</ShowAsSigned>
+                          <Color>104FED</Color>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>+Magnite_Offset</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>49</ID>
+                          <Description>"Umanite"</Description>
+                          <ShowAsSigned>0</ShowAsSigned>
+                          <Color>104FED</Color>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>+Umanite_Offset</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>50</ID>
+                          <Description>"ActiveLoadout"</Description>
+                          <ShowAsSigned>0</ShowAsSigned>
+                          <Color>104FED</Color>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>+ActiveLoadout_Offset</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>51</ID>
+                          <Description>"LoadOuts"</Description>
+                          <Options moHideChildren="1"/>
+                          <ShowAsHex>1</ShowAsHex>
+                          <ShowAsSigned>0</ShowAsSigned>
+                          <Color>D2FF00</Color>
+                          <GroupHeader>1</GroupHeader>
+                          <Address>+LoadOuts_Offset</Address>
+                          <Offsets>
+                            <Offset>0</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>52</ID>
+                          <Description>"ClassRanks[List]"</Description>
+                          <Options moHideChildren="1"/>
+                          <ShowAsHex>1</ShowAsHex>
+                          <ShowAsSigned>0</ShowAsSigned>
+                          <Color>0000FF</Color>
+                          <GroupHeader>1</GroupHeader>
+                          <Address>+ClassRanks_Offset</Address>
+                          <Offsets>
+                            <Offset>20</Offset>
+                          </Offsets>
+                          <CheatEntries>
+                            <CheatEntry>
+                              <ID>53</ID>
+                              <Description>"ClassRanks[Count]"</Description>
+                              <ShowAsSigned>0</ShowAsSigned>
+                              <Color>104FED</Color>
+                              <VariableType>4 Bytes</VariableType>
+                              <Address>MetaManager_Ptr</Address>
+                              <Offsets>
+                                <Offset>18</Offset>
+                                <Offset>ClassRanks_Offset</Offset>
+                                <Offset>18</Offset>
+                                <Offset>+saveDataManager_Offset</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>1337169279</ID>
+                              <Description>"Next Rank"</Description>
+                              <Color>000080</Color>
+                              <VariableType>Auto Assembler Script</VariableType>
+                              <AssemblerScript>{$LUA}
+[ENABLE]
+if syntaxcheck then return end
+local al = getAddressList()
+if al ~= nil then
+   local MemoryRecord  = al.getMemoryRecordByDescription("ClassRanks[Count]")
+   if MemoryRecord ~= nil then
+      local ItemArraySize = MemoryRecord.Value --tonumber(MemoryRecord.Value)
+      local offsetToSet   = 0x08
+      local maxOffset     = 0x08 * ItemArraySize + 0x20
+      local mr = al.getMemoryRecordByDescription("ClassRanks[List]")
+      if mr ~= nil then
+         local oc = mr.OffsetCount
+         local endOffset = oc
+         mr.Offset[oc-endOffset] = mr.Offset[oc-endOffset] + offsetToSet
+         if mr.Offset[oc-endOffset] == maxOffset then
+            mr.Offset[oc-endOffset] = 0x20
+         end
+      end
+   end
+end
+createTimer(10, function() memrec.Active = false end)
+[DISABLE]
+if syntaxcheck then return end
+</AssemblerScript>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>1337169280</ID>
+                              <Description>"Previous Rank"</Description>
+                              <Color>000080</Color>
+                              <VariableType>Auto Assembler Script</VariableType>
+                              <AssemblerScript>{$LUA}
+[ENABLE]
+if syntaxcheck then return end
+local al = getAddressList()
+local mr = al.getMemoryRecordByDescription("ClassRanks[List]")
+local MemoryRecord = al.getMemoryRecordByDescription("ClassRanks[Count]")
+--if mr == nil then return end
+if mr ~= nil and MemoryRecord ~= nil then
+   local ItemArraySize = MemoryRecord.Value --tonumber(MemoryRecord.Value)
+   local offsetToSet   = 0x08
+   local maxOffset     = 0x08 * ItemArraySize + 0x20
+   local oc = mr.OffsetCount
+   local endOffset = oc
+   if mr.Offset[oc-endOffset] ~= 0x20 then
+      mr.Offset[oc-endOffset] = mr.Offset[oc-endOffset] - offsetToSet
+   else
+      mr.Offset[oc-endOffset] = maxOffset - offsetToSet
+   end
+end
+createTimer(10, function() memrec.Active = false end)
+[DISABLE]
+if syntaxcheck then return end
+</AssemblerScript>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>1337169275</ID>
+                              <Description>"ClassRankInfo"</Description>
+                              <ShowAsHex>1</ShowAsHex>
+                              <ShowAsSigned>0</ShowAsSigned>
+                              <Color>D2FF00</Color>
+                              <GroupHeader>1</GroupHeader>
+                              <Address>+0</Address>
+                              <Offsets>
+                                <Offset>0</Offset>
+                              </Offsets>
+                              <CheatEntries>
+                                <CheatEntry>
+                                  <ID>1337169276</ID>
+                                  <Description>"ClassType"</Description>
+                                  <DropDownList ReadOnly="1" DisplayValueAsItem="1">0:Engineer
+1:Gunner
+2:Driller
+3:Scout
+</DropDownList>
+                                  <ShowAsSigned>0</ShowAsSigned>
+                                  <Color>104FED</Color>
+                                  <VariableType>4 Bytes</VariableType>
+                                  <Address>+10</Address>
+                                </CheatEntry>
+                                <CheatEntry>
+                                  <ID>1337169277</ID>
+                                  <Description>"Xp"</Description>
+                                  <ShowAsSigned>0</ShowAsSigned>
+                                  <Color>104FED</Color>
+                                  <VariableType>4 Bytes</VariableType>
+                                  <Address>+14</Address>
+                                </CheatEntry>
+                                <CheatEntry>
+                                  <ID>1337169278</ID>
+                                  <Description>"Rank"</Description>
+                                  <ShowAsSigned>0</ShowAsSigned>
+                                  <Color>104FED</Color>
+                                  <VariableType>4 Bytes</VariableType>
+                                  <Address>+18</Address>
+                                </CheatEntry>
+                              </CheatEntries>
+                            </CheatEntry>
+                          </CheatEntries>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337169274</ID>
+                          <Description>"PlayerRank"</Description>
+                          <ShowAsSigned>0</ShowAsSigned>
+                          <Color>104FED</Color>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>+PlayerRank_Offset</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>54</ID>
+                          <Description>"TotalClassLevels"</Description>
+                          <ShowAsSigned>0</ShowAsSigned>
+                          <Color>104FED</Color>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>+TotalClassLevels_Offset</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>55</ID>
+                          <Description>"NumDivesTotal"</Description>
+                          <ShowAsSigned>0</ShowAsSigned>
+                          <Color>104FED</Color>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>+NumDivesTotal_Offset</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>56</ID>
+                          <Description>"MasterVolumeSetting"</Description>
+                          <ShowAsSigned>0</ShowAsSigned>
+                          <Color>104FED</Color>
+                          <VariableType>Float</VariableType>
+                          <Address>+MasterVolumeSetting_Offset</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>57</ID>
+                          <Description>"MusicVolumeSetting"</Description>
+                          <ShowAsSigned>0</ShowAsSigned>
+                          <Color>104FED</Color>
+                          <VariableType>Float</VariableType>
+                          <Address>+MusicVolumeSetting_Offset</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>58</ID>
+                          <Description>"SFXVolumeSetting"</Description>
+                          <ShowAsSigned>0</ShowAsSigned>
+                          <Color>104FED</Color>
+                          <VariableType>Float</VariableType>
+                          <Address>+SFXVolumeSetting_Offset</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>59</ID>
+                          <Description>"MinimapUnlocked"</Description>
+                          <ShowAsSigned>0</ShowAsSigned>
+                          <Color>104FED</Color>
+                          <VariableType>Byte</VariableType>
+                          <Address>+MinimapUnlocked_Offset</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>60</ID>
+                          <Description>"SecondaryObjectivesUnlocked"</Description>
+                          <ShowAsSigned>0</ShowAsSigned>
+                          <Color>104FED</Color>
+                          <VariableType>Byte</VariableType>
+                          <Address>+SecondaryObjectivesUnlocked_Offset</Address>
+                        </CheatEntry>
+                      </CheatEntries>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>29</ID>
+                      <Description>"IsLoaded"</Description>
+                      <Color>104FED</Color>
+                      <VariableType>Byte</VariableType>
+                      <Address>+0020</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>30</ID>
+                      <Description>"onLoadedCallbacks"</Description>
+                      <Options moHideChildren="1"/>
+                      <ShowAsHex>1</ShowAsHex>
+                      <Color>D2FF00</Color>
+                      <GroupHeader>1</GroupHeader>
+                      <Address>+0028</Address>
+                      <Offsets>
+                        <Offset>0</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>31</ID>
+                      <Description>"classCollection"</Description>
+                      <Options moHideChildren="1"/>
+                      <ShowAsHex>1</ShowAsHex>
+                      <Color>D2FF00</Color>
+                      <GroupHeader>1</GroupHeader>
+                      <Address>+0030</Address>
+                      <Offsets>
+                        <Offset>0</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>32</ID>
+                      <Description>"defaultUnlockedItems"</Description>
+                      <Options moHideChildren="1"/>
+                      <ShowAsHex>1</ShowAsHex>
+                      <Color>D2FF00</Color>
+                      <GroupHeader>1</GroupHeader>
+                      <Address>+0038</Address>
+                      <Offsets>
+                        <Offset>0</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>33</ID>
+                      <Description>"OnSaveDataCleared"</Description>
+                      <Options moHideChildren="1"/>
+                      <ShowAsHex>1</ShowAsHex>
+                      <Color>D2FF00</Color>
+                      <GroupHeader>1</GroupHeader>
+                      <Address>+0040</Address>
+                      <Offsets>
+                        <Offset>0</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1337169281</ID>
+              <Description>"UIManager"</Description>
+              <Options moHideChildren="1"/>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <Color>D2FF00</Color>
+              <GroupHeader>1</GroupHeader>
+              <Address>UIManager_Ptr</Address>
+              <Offsets>
+                <Offset>0</Offset>
+              </Offsets>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>1337169282</ID>
+                  <Description>"m_CachedPtr"</Description>
+                  <Color>104FED</Color>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>+0010</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>1337169283</ID>
+                  <Description>"m_CancellationTokenSource"</Description>
+                  <Options moHideChildren="1"/>
+                  <ShowAsHex>1</ShowAsHex>
+                  <Color>D2FF00</Color>
+                  <GroupHeader>1</GroupHeader>
+                  <Address>+0018</Address>
+                  <Offsets>
+                    <Offset>0</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>1337169284</ID>
+                  <Description>"safeRect"</Description>
+                  <Options moHideChildren="1"/>
+                  <ShowAsHex>1</ShowAsHex>
+                  <Color>D2FF00</Color>
+                  <GroupHeader>1</GroupHeader>
+                  <Address>+0020</Address>
+                  <Offsets>
+                    <Offset>0</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>1337169285</ID>
+                  <Description>"coreUIForm"</Description>
+                  <Options moHideChildren="1"/>
+                  <ShowAsHex>1</ShowAsHex>
+                  <Color>D2FF00</Color>
+                  <GroupHeader>1</GroupHeader>
+                  <Address>+0028</Address>
+                  <Offsets>
+                    <Offset>0</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>1337169286</ID>
+                  <Description>"_supplyPodScreen"</Description>
+                  <Options moHideChildren="1"/>
+                  <ShowAsHex>1</ShowAsHex>
+                  <Color>D2FF00</Color>
+                  <GroupHeader>1</GroupHeader>
+                  <Address>+0030</Address>
+                  <Offsets>
+                    <Offset>0</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>1337169287</ID>
+                  <Description>"_objectiveTracker"</Description>
+                  <Options moHideChildren="1"/>
+                  <ShowAsHex>1</ShowAsHex>
+                  <Color>D2FF00</Color>
+                  <GroupHeader>1</GroupHeader>
+                  <Address>+0038</Address>
+                  <Offsets>
+                    <Offset>0</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>1337169288</ID>
+                  <Description>"levelUpScreen"</Description>
+                  <Options moHideChildren="1"/>
+                  <ShowAsHex>1</ShowAsHex>
+                  <Color>D2FF00</Color>
+                  <GroupHeader>1</GroupHeader>
+                  <Address>+0040</Address>
+                  <Offsets>
+                    <Offset>0</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>1337169289</ID>
+                  <Description>"overclockScreen"</Description>
+                  <Options moHideChildren="1"/>
+                  <ShowAsHex>1</ShowAsHex>
+                  <Color>D2FF00</Color>
+                  <GroupHeader>1</GroupHeader>
+                  <Address>+0048</Address>
+                  <Offsets>
+                    <Offset>0</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>1337169290</ID>
+                  <Description>"shopScreen"</Description>
+                  <Options moHideChildren="1"/>
+                  <ShowAsHex>1</ShowAsHex>
+                  <Color>D2FF00</Color>
+                  <GroupHeader>1</GroupHeader>
+                  <Address>+0050</Address>
+                  <Offsets>
+                    <Offset>0</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>1337169291</ID>
+                  <Description>"endScreen"</Description>
+                  <Options moHideChildren="1"/>
+                  <ShowAsHex>1</ShowAsHex>
+                  <Color>D2FF00</Color>
+                  <GroupHeader>1</GroupHeader>
+                  <Address>+0058</Address>
+                  <Offsets>
+                    <Offset>0</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>1337169292</ID>
+                  <Description>"settingsPopup"</Description>
+                  <Options moHideChildren="1"/>
+                  <ShowAsHex>1</ShowAsHex>
+                  <Color>D2FF00</Color>
+                  <GroupHeader>1</GroupHeader>
+                  <Address>+0060</Address>
+                  <Offsets>
+                    <Offset>0</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>1337169293</ID>
+                  <Description>"corePauseForm"</Description>
+                  <Options moHideChildren="1"/>
+                  <ShowAsHex>1</ShowAsHex>
+                  <Color>D2FF00</Color>
+                  <GroupHeader>1</GroupHeader>
+                  <Address>+0068</Address>
+                  <Offsets>
+                    <Offset>0</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>1337169294</ID>
+                  <Description>"unlockForm"</Description>
+                  <Options moHideChildren="1"/>
+                  <ShowAsHex>1</ShowAsHex>
+                  <Color>D2FF00</Color>
+                  <GroupHeader>1</GroupHeader>
+                  <Address>+0070</Address>
+                  <Offsets>
+                    <Offset>0</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>1337169295</ID>
+                  <Description>"coreOutro"</Description>
+                  <Options moHideChildren="1"/>
+                  <ShowAsHex>1</ShowAsHex>
+                  <Color>D2FF00</Color>
+                  <GroupHeader>1</GroupHeader>
+                  <Address>+0078</Address>
+                  <Offsets>
+                    <Offset>0</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>1337169296</ID>
+                  <Description>"genericPopup"</Description>
+                  <Options moHideChildren="1"/>
+                  <ShowAsHex>1</ShowAsHex>
+                  <Color>D2FF00</Color>
+                  <GroupHeader>1</GroupHeader>
+                  <Address>+0080</Address>
+                  <Offsets>
+                    <Offset>0</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>1337169297</ID>
+                  <Description>"wishlistPopup"</Description>
+                  <Options moHideChildren="1"/>
+                  <ShowAsHex>1</ShowAsHex>
+                  <Color>D2FF00</Color>
+                  <GroupHeader>1</GroupHeader>
+                  <Address>+0088</Address>
+                  <Offsets>
+                    <Offset>0</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>1337169298</ID>
+                  <Description>"_fadeOverlay"</Description>
+                  <Options moHideChildren="1"/>
+                  <ShowAsHex>1</ShowAsHex>
+                  <Color>D2FF00</Color>
+                  <GroupHeader>1</GroupHeader>
+                  <Address>+0090</Address>
+                  <Offsets>
+                    <Offset>0</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>1337169299</ID>
+                  <Description>"loadingScreen"</Description>
+                  <Options moHideChildren="1"/>
+                  <ShowAsHex>1</ShowAsHex>
+                  <Color>D2FF00</Color>
+                  <GroupHeader>1</GroupHeader>
+                  <Address>+0098</Address>
+                  <Offsets>
+                    <Offset>0</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>1337169300</ID>
+                  <Description>"blurBackground"</Description>
+                  <Options moHideChildren="1"/>
+                  <ShowAsHex>1</ShowAsHex>
+                  <Color>D2FF00</Color>
+                  <GroupHeader>1</GroupHeader>
+                  <Address>+00A0</Address>
+                  <Offsets>
+                    <Offset>0</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>1337169301</ID>
+                  <Description>"solidBackground"</Description>
+                  <Options moHideChildren="1"/>
+                  <ShowAsHex>1</ShowAsHex>
+                  <Color>D2FF00</Color>
+                  <GroupHeader>1</GroupHeader>
+                  <Address>+00A8</Address>
+                  <Offsets>
+                    <Offset>0</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>1337169302</ID>
+                  <Description>"bugReportPopup"</Description>
+                  <Options moHideChildren="1"/>
+                  <ShowAsHex>1</ShowAsHex>
+                  <Color>D2FF00</Color>
+                  <GroupHeader>1</GroupHeader>
+                  <Address>+00B0</Address>
+                  <Offsets>
+                    <Offset>0</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>1337169303</ID>
+                  <Description>"cheatScreen"</Description>
+                  <Options moHideChildren="1"/>
+                  <ShowAsHex>1</ShowAsHex>
+                  <Color>D2FF00</Color>
+                  <GroupHeader>1</GroupHeader>
+                  <Address>+00B8</Address>
+                  <Offsets>
+                    <Offset>0</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>1337169304</ID>
+                  <Description>"wallet"</Description>
+                  <Options moHideChildren="1"/>
+                  <ShowAsHex>1</ShowAsHex>
+                  <Color>D2FF00</Color>
+                  <GroupHeader>1</GroupHeader>
+                  <Address>+00C0</Address>
+                  <Offsets>
+                    <Offset>0</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>1337169305</ID>
+                  <Description>"gameController"</Description>
+                  <Options moHideChildren="1"/>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <Color>0000FF</Color>
+                  <GroupHeader>1</GroupHeader>
+                  <Address>+gameController_Offset</Address>
+                  <Offsets>
+                    <Offset>0</Offset>
+                  </Offsets>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>1337169320</ID>
+                      <Description>"m_CachedPtr"</Description>
+                      <Color>104FED</Color>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>+0010</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337169321</ID>
+                      <Description>"m_CancellationTokenSource"</Description>
+                      <Options moHideChildren="1"/>
+                      <ShowAsHex>1</ShowAsHex>
+                      <Color>D2FF00</Color>
+                      <GroupHeader>1</GroupHeader>
+                      <Address>+0018</Address>
+                      <Offsets>
+                        <Offset>0</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337169322</ID>
+                      <Description>"debugArtifacts"</Description>
+                      <Options moHideChildren="1"/>
+                      <ShowAsHex>1</ShowAsHex>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <Color>D2FF00</Color>
+                      <GroupHeader>1</GroupHeader>
+                      <Address>+debugArtifacts_Offset</Address>
+                      <Offsets>
+                        <Offset>0</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337169323</ID>
+                      <Description>"_postFxHandler"</Description>
+                      <Options moHideChildren="1"/>
+                      <ShowAsHex>1</ShowAsHex>
+                      <Color>D2FF00</Color>
+                      <GroupHeader>1</GroupHeader>
+                      <Address>+0028</Address>
+                      <Offsets>
+                        <Offset>0</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337169324</ID>
+                      <Description>"_state"</Description>
+                      <Color>104FED</Color>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>+0030</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337169325</ID>
+                      <Description>"objectiveTracker"</Description>
+                      <Options moHideChildren="1"/>
+                      <ShowAsHex>1</ShowAsHex>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <Color>D2FF00</Color>
+                      <GroupHeader>1</GroupHeader>
+                      <Address>+objectiveTracker_Offset</Address>
+                      <Offsets>
+                        <Offset>0</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337169326</ID>
+                      <Description>"dropPod"</Description>
+                      <Options moHideChildren="1"/>
+                      <ShowAsHex>1</ShowAsHex>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <Color>D2FF00</Color>
+                      <GroupHeader>1</GroupHeader>
+                      <Address>+dropPod_Offset</Address>
+                      <Offsets>
+                        <Offset>0</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337169327</ID>
+                      <Description>"supplyPod"</Description>
+                      <Options moHideChildren="1"/>
+                      <ShowAsHex>1</ShowAsHex>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <Color>D2FF00</Color>
+                      <GroupHeader>1</GroupHeader>
+                      <Address>+supplyPod_Offset</Address>
+                      <Offsets>
+                        <Offset>0</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337169328</ID>
+                      <Description>"uiCam"</Description>
+                      <Options moHideChildren="1"/>
+                      <ShowAsHex>1</ShowAsHex>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <Color>D2FF00</Color>
+                      <GroupHeader>1</GroupHeader>
+                      <Address>+uiCam_Offset</Address>
+                      <Offsets>
+                        <Offset>0</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337169329</ID>
+                      <Description>"secondsInLevel"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <Color>104FED</Color>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>+secondsInLevel_Offset</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337169330</ID>
+                      <Description>"timeInLevelProgress"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <Color>104FED</Color>
+                      <VariableType>Float</VariableType>
+                      <Address>+timeInLevelProgress_Offset</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337169331</ID>
+                      <Description>"pauseCount"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <Color>104FED</Color>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>+pauseCount_Offset</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337169332</ID>
+                      <Description>"timeScaleCoroutine"</Description>
+                      <Options moHideChildren="1"/>
+                      <ShowAsHex>1</ShowAsHex>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <Color>D2FF00</Color>
+                      <GroupHeader>1</GroupHeader>
+                      <Address>+timeScaleCoroutine_Offset</Address>
+                      <Offsets>
+                        <Offset>0</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337169333</ID>
+                      <Description>"totalRunTime"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <Color>104FED</Color>
+                      <VariableType>Float</VariableType>
+                      <Address>+totalRunTime_Offset</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337169334</ID>
+                      <Description>"uiManager"</Description>
+                      <Options moHideChildren="1"/>
+                      <ShowAsHex>1</ShowAsHex>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <Color>D2FF00</Color>
+                      <GroupHeader>1</GroupHeader>
+                      <Address>+uiManager_Offset</Address>
+                      <Offsets>
+                        <Offset>0</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337169335</ID>
+                      <Description>"audioManager"</Description>
+                      <Options moHideChildren="1"/>
+                      <ShowAsHex>1</ShowAsHex>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <Color>D2FF00</Color>
+                      <GroupHeader>1</GroupHeader>
+                      <Address>+audioManager_Offset</Address>
+                      <Offsets>
+                        <Offset>0</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337169336</ID>
+                      <Description>"cameraController"</Description>
+                      <Options moHideChildren="1"/>
+                      <ShowAsHex>1</ShowAsHex>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <Color>D2FF00</Color>
+                      <GroupHeader>1</GroupHeader>
+                      <Address>+cameraController_Offset</Address>
+                      <Offsets>
+                        <Offset>0</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337169337</ID>
+                      <Description>"coroutineRunner"</Description>
+                      <Options moHideChildren="1"/>
+                      <ShowAsHex>1</ShowAsHex>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <Color>D2FF00</Color>
+                      <GroupHeader>1</GroupHeader>
+                      <Address>+coroutineRunner_Offset</Address>
+                      <Offsets>
+                        <Offset>0</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337169338</ID>
+                      <Description>"enemySpawner"</Description>
+                      <Options moHideChildren="1"/>
+                      <ShowAsHex>1</ShowAsHex>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <Color>D2FF00</Color>
+                      <GroupHeader>1</GroupHeader>
+                      <Address>+enemySpawner_Offset</Address>
+                      <Offsets>
+                        <Offset>0</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337169339</ID>
+                      <Description>"skillCollectionManager"</Description>
+                      <Options moHideChildren="1"/>
+                      <ShowAsHex>1</ShowAsHex>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <Color>D2FF00</Color>
+                      <GroupHeader>1</GroupHeader>
+                      <Address>+skillCollectionManager_Offset</Address>
+                      <Offsets>
+                        <Offset>0</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337169340</ID>
+                      <Description>"pickupSpawner"</Description>
+                      <Options moHideChildren="1"/>
+                      <ShowAsHex>1</ShowAsHex>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <Color>D2FF00</Color>
+                      <GroupHeader>1</GroupHeader>
+                      <Address>+pickupSpawner_Offset</Address>
+                      <Offsets>
+                        <Offset>0</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337169341</ID>
+                      <Description>"mapGenerator"</Description>
+                      <Options moHideChildren="1"/>
+                      <ShowAsHex>1</ShowAsHex>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <Color>D2FF00</Color>
+                      <GroupHeader>1</GroupHeader>
+                      <Address>+mapGenerator_Offset</Address>
+                      <Offsets>
+                        <Offset>0</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337169342</ID>
+                      <Description>"player"</Description>
+                      <Options moHideChildren="1"/>
+                      <ShowAsHex>1</ShowAsHex>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <Color>0000FF</Color>
+                      <GroupHeader>1</GroupHeader>
+                      <Address>+player_Offset</Address>
+                      <Offsets>
+                        <Offset>0</Offset>
+                      </Offsets>
+                      <CheatEntries>
+                        <CheatEntry>
+                          <ID>1337169349</ID>
+                          <Description>"m_CachedPtr"</Description>
+                          <Color>104FED</Color>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>+0010</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337169350</ID>
+                          <Description>"m_CancellationTokenSource"</Description>
+                          <Options moHideChildren="1"/>
+                          <ShowAsHex>1</ShowAsHex>
+                          <Color>D2FF00</Color>
+                          <GroupHeader>1</GroupHeader>
+                          <Address>+0018</Address>
+                          <Offsets>
+                            <Offset>0</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337169351</ID>
+                          <Description>"currentHp"</Description>
+                          <Color>104FED</Color>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>+0020</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337169352</ID>
+                          <Description>"stats"</Description>
+                          <Options moHideChildren="1"/>
+                          <ShowAsHex>1</ShowAsHex>
+                          <Color>D2FF00</Color>
+                          <GroupHeader>1</GroupHeader>
+                          <Address>+0028</Address>
+                          <Offsets>
+                            <Offset>0</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337169353</ID>
+                          <Description>"IsInvulnerable"</Description>
+                          <Color>104FED</Color>
+                          <VariableType>Byte</VariableType>
+                          <Address>+0030</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337169354</ID>
+                          <Description>"_baseStats"</Description>
+                          <Options moHideChildren="1"/>
+                          <ShowAsHex>1</ShowAsHex>
+                          <Color>D2FF00</Color>
+                          <GroupHeader>1</GroupHeader>
+                          <Address>+0038</Address>
+                          <Offsets>
+                            <Offset>0</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337169355</ID>
+                          <Description>"rb"</Description>
+                          <Options moHideChildren="1"/>
+                          <ShowAsHex>1</ShowAsHex>
+                          <Color>D2FF00</Color>
+                          <GroupHeader>1</GroupHeader>
+                          <Address>+0040</Address>
+                          <Offsets>
+                            <Offset>0</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337169356</ID>
+                          <Description>"moveCollider"</Description>
+                          <Options moHideChildren="1"/>
+                          <ShowAsHex>1</ShowAsHex>
+                          <Color>D2FF00</Color>
+                          <GroupHeader>1</GroupHeader>
+                          <Address>+0048</Address>
+                          <Offsets>
+                            <Offset>0</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337169357</ID>
+                          <Description>"activeSkill"</Description>
+                          <Options moHideChildren="1"/>
+                          <ShowAsHex>1</ShowAsHex>
+                          <Color>D2FF00</Color>
+                          <GroupHeader>1</GroupHeader>
+                          <Address>+0050</Address>
+                          <Offsets>
+                            <Offset>0</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337169358</ID>
+                          <Description>"collisionEvents"</Description>
+                          <Options moHideChildren="1"/>
+                          <ShowAsHex>1</ShowAsHex>
+                          <Color>D2FF00</Color>
+                          <GroupHeader>1</GroupHeader>
+                          <Address>+0058</Address>
+                          <Offsets>
+                            <Offset>0</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337169359</ID>
+                          <Description>"carryingAnchor"</Description>
+                          <Options moHideChildren="1"/>
+                          <ShowAsHex>1</ShowAsHex>
+                          <Color>D2FF00</Color>
+                          <GroupHeader>1</GroupHeader>
+                          <Address>+0060</Address>
+                          <Offsets>
+                            <Offset>0</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337169360</ID>
+                          <Description>"firePoint"</Description>
+                          <Options moHideChildren="1"/>
+                          <ShowAsHex>1</ShowAsHex>
+                          <Color>D2FF00</Color>
+                          <GroupHeader>1</GroupHeader>
+                          <Address>+0068</Address>
+                          <Offsets>
+                            <Offset>0</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337169361</ID>
+                          <Description>"weaponSkillObj"</Description>
+                          <Options moHideChildren="1"/>
+                          <ShowAsHex>1</ShowAsHex>
+                          <Color>D2FF00</Color>
+                          <GroupHeader>1</GroupHeader>
+                          <Address>+0070</Address>
+                          <Offsets>
+                            <Offset>0</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337169362</ID>
+                          <Description>"artifactSKillObj"</Description>
+                          <Options moHideChildren="1"/>
+                          <ShowAsHex>1</ShowAsHex>
+                          <Color>D2FF00</Color>
+                          <GroupHeader>1</GroupHeader>
+                          <Address>+0078</Address>
+                          <Offsets>
+                            <Offset>0</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337169363</ID>
+                          <Description>"boscoStarterWeaponData"</Description>
+                          <Options moHideChildren="1"/>
+                          <ShowAsHex>1</ShowAsHex>
+                          <Color>D2FF00</Color>
+                          <GroupHeader>1</GroupHeader>
+                          <Address>+0080</Address>
+                          <Offsets>
+                            <Offset>0</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337169364</ID>
+                          <Description>"maxWeapons"</Description>
+                          <Color>104FED</Color>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>+0088</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337169365</ID>
+                          <Description>"weapons"</Description>
+                          <Options moHideChildren="1"/>
+                          <ShowAsHex>1</ShowAsHex>
+                          <Color>D2FF00</Color>
+                          <GroupHeader>1</GroupHeader>
+                          <Address>+0090</Address>
+                          <Offsets>
+                            <Offset>0</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337169366</ID>
+                          <Description>"boscoWeapons"</Description>
+                          <Options moHideChildren="1"/>
+                          <ShowAsHex>1</ShowAsHex>
+                          <Color>D2FF00</Color>
+                          <GroupHeader>1</GroupHeader>
+                          <Address>+0098</Address>
+                          <Offsets>
+                            <Offset>0</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337169367</ID>
+                          <Description>"classArtifactData"</Description>
+                          <Options moHideChildren="1"/>
+                          <ShowAsHex>1</ShowAsHex>
+                          <Color>D2FF00</Color>
+                          <GroupHeader>1</GroupHeader>
+                          <Address>+00A0</Address>
+                          <Offsets>
+                            <Offset>0</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337169368</ID>
+                          <Description>"equippedArtifacts"</Description>
+                          <Options moHideChildren="1"/>
+                          <ShowAsHex>1</ShowAsHex>
+                          <Color>D2FF00</Color>
+                          <GroupHeader>1</GroupHeader>
+                          <Address>+00A8</Address>
+                          <Offsets>
+                            <Offset>0</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337169369</ID>
+                          <Description>"_pickupCollider"</Description>
+                          <Options moHideChildren="1"/>
+                          <ShowAsHex>1</ShowAsHex>
+                          <Color>D2FF00</Color>
+                          <GroupHeader>1</GroupHeader>
+                          <Address>+00B0</Address>
+                          <Offsets>
+                            <Offset>0</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337169370</ID>
+                          <Description>"_healFx"</Description>
+                          <Options moHideChildren="1"/>
+                          <ShowAsHex>1</ShowAsHex>
+                          <Color>D2FF00</Color>
+                          <GroupHeader>1</GroupHeader>
+                          <Address>+00B8</Address>
+                          <Offsets>
+                            <Offset>0</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337169371</ID>
+                          <Description>"skinController"</Description>
+                          <Options moHideChildren="1"/>
+                          <ShowAsHex>1</ShowAsHex>
+                          <Color>D2FF00</Color>
+                          <GroupHeader>1</GroupHeader>
+                          <Address>+00C0</Address>
+                          <Offsets>
+                            <Offset>0</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337169372</ID>
+                          <Description>"miningLayerWeightCoroutine"</Description>
+                          <Options moHideChildren="1"/>
+                          <ShowAsHex>1</ShowAsHex>
+                          <Color>D2FF00</Color>
+                          <GroupHeader>1</GroupHeader>
+                          <Address>+00C8</Address>
+                          <Offsets>
+                            <Offset>0</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337169373</ID>
+                          <Description>"_gfxContainer"</Description>
+                          <Options moHideChildren="1"/>
+                          <ShowAsHex>1</ShowAsHex>
+                          <Color>D2FF00</Color>
+                          <GroupHeader>1</GroupHeader>
+                          <Address>+00D0</Address>
+                          <Offsets>
+                            <Offset>0</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337169374</ID>
+                          <Description>"camTarget"</Description>
+                          <Options moHideChildren="1"/>
+                          <ShowAsHex>1</ShowAsHex>
+                          <Color>D2FF00</Color>
+                          <GroupHeader>1</GroupHeader>
+                          <Address>+00D8</Address>
+                          <Offsets>
+                            <Offset>0</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337169375</ID>
+                          <Description>"rotationLerpSpeed"</Description>
+                          <Color>104FED</Color>
+                          <VariableType>Float</VariableType>
+                          <Address>+00E0</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337169376</ID>
+                          <Description>"miningCooldown"</Description>
+                          <Color>104FED</Color>
+                          <VariableType>Float</VariableType>
+                          <Address>+00E4</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337169377</ID>
+                          <Description>"miningRadius"</Description>
+                          <Color>104FED</Color>
+                          <VariableType>Float</VariableType>
+                          <Address>+00E8</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337169378</ID>
+                          <Description>"nextMiningTime"</Description>
+                          <Color>104FED</Color>
+                          <VariableType>Float</VariableType>
+                          <Address>+00EC</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337169379</ID>
+                          <Description>"miningDamage"</Description>
+                          <Color>104FED</Color>
+                          <VariableType>Float</VariableType>
+                          <Address>+00F0</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337169380</ID>
+                          <Description>"damageImmunityDuration"</Description>
+                          <Color>104FED</Color>
+                          <VariableType>Float</VariableType>
+                          <Address>+00F4</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337169381</ID>
+                          <Description>"damageImmuneUntil"</Description>
+                          <Color>104FED</Color>
+                          <VariableType>Float</VariableType>
+                          <Address>+00F8</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337169382</ID>
+                          <Description>"xpToLevel"</Description>
+                          <Options moHideChildren="1"/>
+                          <ShowAsHex>1</ShowAsHex>
+                          <Color>D2FF00</Color>
+                          <GroupHeader>1</GroupHeader>
+                          <Address>+0100</Address>
+                          <Offsets>
+                            <Offset>0</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337169383</ID>
+                          <Description>"currentXp"</Description>
+                          <Color>104FED</Color>
+                          <VariableType>Float</VariableType>
+                          <Address>+0108</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337169384</ID>
+                          <Description>"totalXp"</Description>
+                          <Color>104FED</Color>
+                          <VariableType>Float</VariableType>
+                          <Address>+010C</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337169385</ID>
+                          <Description>"currentLevel"</Description>
+                          <Color>104FED</Color>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>+0110</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337169386</ID>
+                          <Description>"lifeRegenCooldown"</Description>
+                          <Color>104FED</Color>
+                          <VariableType>Float</VariableType>
+                          <Address>+0114</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337169387</ID>
+                          <Description>"cachedLifeRegen"</Description>
+                          <Color>104FED</Color>
+                          <VariableType>Float</VariableType>
+                          <Address>+0118</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337169388</ID>
+                          <Description>"playerLight"</Description>
+                          <Options moHideChildren="1"/>
+                          <ShowAsHex>1</ShowAsHex>
+                          <Color>D2FF00</Color>
+                          <GroupHeader>1</GroupHeader>
+                          <Address>+0120</Address>
+                          <Offsets>
+                            <Offset>0</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337169389</ID>
+                          <Description>"playerTopLight"</Description>
+                          <Options moHideChildren="1"/>
+                          <ShowAsHex>1</ShowAsHex>
+                          <Color>D2FF00</Color>
+                          <GroupHeader>1</GroupHeader>
+                          <Address>+0128</Address>
+                          <Offsets>
+                            <Offset>0</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337169390</ID>
+                          <Description>"blobShadow"</Description>
+                          <Options moHideChildren="1"/>
+                          <ShowAsHex>1</ShowAsHex>
+                          <Color>D2FF00</Color>
+                          <GroupHeader>1</GroupHeader>
+                          <Address>+0130</Address>
+                          <Offsets>
+                            <Offset>0</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337169391</ID>
+                          <Description>"moveDir"</Description>
+                          <Color>104FED</Color>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>+0138</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337169392</ID>
+                          <Description>"moveDelta"</Description>
+                          <Color>104FED</Color>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>+0140</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337169393</ID>
+                          <Description>"forcedMoveDurationLeft"</Description>
+                          <Color>104FED</Color>
+                          <VariableType>Float</VariableType>
+                          <Address>+014C</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337169394</ID>
+                          <Description>"_moveControlType"</Description>
+                          <Color>104FED</Color>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>+0150</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337169395</ID>
+                          <Description>"DEBUG_WPNS"</Description>
+                          <Options moHideChildren="1"/>
+                          <ShowAsHex>1</ShowAsHex>
+                          <Color>D2FF00</Color>
+                          <GroupHeader>1</GroupHeader>
+                          <Address>+0158</Address>
+                          <Offsets>
+                            <Offset>0</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337169396</ID>
+                          <Description>"GOD_MODE"</Description>
+                          <Color>104FED</Color>
+                          <VariableType>Byte</VariableType>
+                          <Address>+0160</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337169397</ID>
+                          <Description>"PACIFIST_MODE"</Description>
+                          <Color>104FED</Color>
+                          <VariableType>Byte</VariableType>
+                          <Address>+0161</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337169398</ID>
+                          <Description>"boscoFirePoint"</Description>
+                          <Options moHideChildren="1"/>
+                          <ShowAsHex>1</ShowAsHex>
+                          <Color>D2FF00</Color>
+                          <GroupHeader>1</GroupHeader>
+                          <Address>+0168</Address>
+                          <Offsets>
+                            <Offset>0</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337169399</ID>
+                          <Description>"friendlyTargetsHandler"</Description>
+                          <Options moHideChildren="1"/>
+                          <ShowAsHex>1</ShowAsHex>
+                          <Color>D2FF00</Color>
+                          <GroupHeader>1</GroupHeader>
+                          <Address>+0170</Address>
+                          <Offsets>
+                            <Offset>0</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337169400</ID>
+                          <Description>"lastPos"</Description>
+                          <Color>104FED</Color>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>+0178</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337169401</ID>
+                          <Description>"&lt;maxHp&gt;k__BackingField"</Description>
+                          <Options moHideChildren="1"/>
+                          <ShowAsHex>1</ShowAsHex>
+                          <Color>D2FF00</Color>
+                          <GroupHeader>1</GroupHeader>
+                          <Address>+0188</Address>
+                          <Offsets>
+                            <Offset>0</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337169402</ID>
+                          <Description>"&lt;moveSpeed&gt;k__BackingField"</Description>
+                          <Options moHideChildren="1"/>
+                          <ShowAsHex>1</ShowAsHex>
+                          <Color>D2FF00</Color>
+                          <GroupHeader>1</GroupHeader>
+                          <Address>+0190</Address>
+                          <Offsets>
+                            <Offset>0</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337169403</ID>
+                          <Description>"&lt;lifeRegen&gt;k__BackingField"</Description>
+                          <Options moHideChildren="1"/>
+                          <ShowAsHex>1</ShowAsHex>
+                          <Color>D2FF00</Color>
+                          <GroupHeader>1</GroupHeader>
+                          <Address>+0198</Address>
+                          <Offsets>
+                            <Offset>0</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337169404</ID>
+                          <Description>"&lt;dodge&gt;k__BackingField"</Description>
+                          <Options moHideChildren="1"/>
+                          <ShowAsHex>1</ShowAsHex>
+                          <Color>D2FF00</Color>
+                          <GroupHeader>1</GroupHeader>
+                          <Address>+01A0</Address>
+                          <Offsets>
+                            <Offset>0</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337169405</ID>
+                          <Description>"&lt;armor&gt;k__BackingField"</Description>
+                          <Options moHideChildren="1"/>
+                          <ShowAsHex>1</ShowAsHex>
+                          <Color>D2FF00</Color>
+                          <GroupHeader>1</GroupHeader>
+                          <Address>+01A8</Address>
+                          <Offsets>
+                            <Offset>0</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337169406</ID>
+                          <Description>"&lt;miningSpeed&gt;k__BackingField"</Description>
+                          <Options moHideChildren="1"/>
+                          <ShowAsHex>1</ShowAsHex>
+                          <Color>D2FF00</Color>
+                          <GroupHeader>1</GroupHeader>
+                          <Address>+01B0</Address>
+                          <Offsets>
+                            <Offset>0</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337169407</ID>
+                          <Description>"&lt;xpGain&gt;k__BackingField"</Description>
+                          <Options moHideChildren="1"/>
+                          <ShowAsHex>1</ShowAsHex>
+                          <Color>D2FF00</Color>
+                          <GroupHeader>1</GroupHeader>
+                          <Address>+01B8</Address>
+                          <Offsets>
+                            <Offset>0</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337169408</ID>
+                          <Description>"&lt;luck&gt;k__BackingField"</Description>
+                          <Options moHideChildren="1"/>
+                          <ShowAsHex>1</ShowAsHex>
+                          <Color>D2FF00</Color>
+                          <GroupHeader>1</GroupHeader>
+                          <Address>+01C0</Address>
+                          <Offsets>
+                            <Offset>0</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337169409</ID>
+                          <Description>"&lt;pickupRadius&gt;k__BackingField"</Description>
+                          <Options moHideChildren="1"/>
+                          <ShowAsHex>1</ShowAsHex>
+                          <Color>D2FF00</Color>
+                          <GroupHeader>1</GroupHeader>
+                          <Address>+01C8</Address>
+                          <Offsets>
+                            <Offset>0</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337169410</ID>
+                          <Description>"burnDmgMod"</Description>
+                          <Color>104FED</Color>
+                          <VariableType>Float</VariableType>
+                          <Address>+01D0</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337169411</ID>
+                          <Description>"corrodeDmgMod"</Description>
+                          <Color>104FED</Color>
+                          <VariableType>Float</VariableType>
+                          <Address>+01D4</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337169412</ID>
+                          <Description>"electrocuteDmgMod"</Description>
+                          <Color>104FED</Color>
+                          <VariableType>Float</VariableType>
+                          <Address>+01D8</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337169413</ID>
+                          <Description>"weaponsActive"</Description>
+                          <Color>104FED</Color>
+                          <VariableType>Byte</VariableType>
+                          <Address>+01DC</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337169414</ID>
+                          <Description>"enemyLayer"</Description>
+                          <Color>104FED</Color>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>+01E0</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337169415</ID>
+                          <Description>"gameStateProvider"</Description>
+                          <Options moHideChildren="1"/>
+                          <ShowAsHex>1</ShowAsHex>
+                          <Color>D2FF00</Color>
+                          <GroupHeader>1</GroupHeader>
+                          <Address>+01E8</Address>
+                          <Offsets>
+                            <Offset>0</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337169416</ID>
+                          <Description>"cameraController"</Description>
+                          <Options moHideChildren="1"/>
+                          <ShowAsHex>1</ShowAsHex>
+                          <Color>D2FF00</Color>
+                          <GroupHeader>1</GroupHeader>
+                          <Address>+01F0</Address>
+                          <Offsets>
+                            <Offset>0</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337169417</ID>
+                          <Description>"diContainer"</Description>
+                          <Options moHideChildren="1"/>
+                          <ShowAsHex>1</ShowAsHex>
+                          <Color>D2FF00</Color>
+                          <GroupHeader>1</GroupHeader>
+                          <Address>+01F8</Address>
+                          <Offsets>
+                            <Offset>0</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337169418</ID>
+                          <Description>"layerMaskLibrary"</Description>
+                          <Options moHideChildren="1"/>
+                          <ShowAsHex>1</ShowAsHex>
+                          <Color>D2FF00</Color>
+                          <GroupHeader>1</GroupHeader>
+                          <Address>+0200</Address>
+                          <Offsets>
+                            <Offset>0</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337169419</ID>
+                          <Description>"sfxManager"</Description>
+                          <Options moHideChildren="1"/>
+                          <ShowAsHex>1</ShowAsHex>
+                          <Color>D2FF00</Color>
+                          <GroupHeader>1</GroupHeader>
+                          <Address>+0208</Address>
+                          <Offsets>
+                            <Offset>0</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337169420</ID>
+                          <Description>"pickupSpawner"</Description>
+                          <Options moHideChildren="1"/>
+                          <ShowAsHex>1</ShowAsHex>
+                          <Color>D2FF00</Color>
+                          <GroupHeader>1</GroupHeader>
+                          <Address>+0210</Address>
+                          <Offsets>
+                            <Offset>0</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337169421</ID>
+                          <Description>"gameController"</Description>
+                          <Options moHideChildren="1"/>
+                          <ShowAsHex>1</ShowAsHex>
+                          <Color>D2FF00</Color>
+                          <GroupHeader>1</GroupHeader>
+                          <Address>+0218</Address>
+                          <Offsets>
+                            <Offset>0</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337169422</ID>
+                          <Description>"classArtifactManager"</Description>
+                          <Options moHideChildren="1"/>
+                          <ShowAsHex>1</ShowAsHex>
+                          <Color>D2FF00</Color>
+                          <GroupHeader>1</GroupHeader>
+                          <Address>+0220</Address>
+                          <Offsets>
+                            <Offset>0</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337169423</ID>
+                          <Description>"droneCollisionHandler"</Description>
+                          <Options moHideChildren="1"/>
+                          <ShowAsHex>1</ShowAsHex>
+                          <Color>D2FF00</Color>
+                          <GroupHeader>1</GroupHeader>
+                          <Address>+0228</Address>
+                          <Offsets>
+                            <Offset>0</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337169424</ID>
+                          <Description>"saveDataManager"</Description>
+                          <Options moHideChildren="1"/>
+                          <ShowAsHex>1</ShowAsHex>
+                          <Color>D2FF00</Color>
+                          <GroupHeader>1</GroupHeader>
+                          <Address>+0230</Address>
+                          <Offsets>
+                            <Offset>0</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337169425</ID>
+                          <Description>"magnetAudio"</Description>
+                          <Options moHideChildren="1"/>
+                          <ShowAsHex>1</ShowAsHex>
+                          <Color>D2FF00</Color>
+                          <GroupHeader>1</GroupHeader>
+                          <Address>+0238</Address>
+                          <Offsets>
+                            <Offset>0</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337169426</ID>
+                          <Description>"loadoutManager"</Description>
+                          <Options moHideChildren="1"/>
+                          <ShowAsHex>1</ShowAsHex>
+                          <Color>D2FF00</Color>
+                          <GroupHeader>1</GroupHeader>
+                          <Address>+0240</Address>
+                          <Offsets>
+                            <Offset>0</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337169427</ID>
+                          <Description>"skillCollectionManager"</Description>
+                          <Options moHideChildren="1"/>
+                          <ShowAsHex>1</ShowAsHex>
+                          <Color>D2FF00</Color>
+                          <GroupHeader>1</GroupHeader>
+                          <Address>+0248</Address>
+                          <Offsets>
+                            <Offset>0</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337169428</ID>
+                          <Description>"runStateManager"</Description>
+                          <Options moHideChildren="1"/>
+                          <ShowAsHex>1</ShowAsHex>
+                          <Color>D2FF00</Color>
+                          <GroupHeader>1</GroupHeader>
+                          <Address>+0250</Address>
+                          <Offsets>
+                            <Offset>0</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337169429</ID>
+                          <Description>"currentlyCarried"</Description>
+                          <Options moHideChildren="1"/>
+                          <ShowAsHex>1</ShowAsHex>
+                          <Color>D2FF00</Color>
+                          <GroupHeader>1</GroupHeader>
+                          <Address>+0258</Address>
+                          <Offsets>
+                            <Offset>0</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337169430</ID>
+                          <Description>"rawAimInput"</Description>
+                          <Color>104FED</Color>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>+0260</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337169431</ID>
+                          <Description>"smoothedAimInput"</Description>
+                          <Color>104FED</Color>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>+0268</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337169432</ID>
+                          <Description>"curAimVel"</Description>
+                          <Color>104FED</Color>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>+0270</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337169433</ID>
+                          <Description>"aimActive"</Description>
+                          <Color>104FED</Color>
+                          <VariableType>Byte</VariableType>
+                          <Address>+0278</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337169434</ID>
+                          <Description>"audioNitraPickup"</Description>
+                          <Options moHideChildren="1"/>
+                          <ShowAsHex>1</ShowAsHex>
+                          <Color>D2FF00</Color>
+                          <GroupHeader>1</GroupHeader>
+                          <Address>+0280</Address>
+                          <Offsets>
+                            <Offset>0</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337169435</ID>
+                          <Description>"audioGoldPickup"</Description>
+                          <Options moHideChildren="1"/>
+                          <ShowAsHex>1</ShowAsHex>
+                          <Color>D2FF00</Color>
+                          <GroupHeader>1</GroupHeader>
+                          <Address>+0288</Address>
+                          <Offsets>
+                            <Offset>0</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337169436</ID>
+                          <Description>"magnetSounds"</Description>
+                          <Options moHideChildren="1"/>
+                          <ShowAsHex>1</ShowAsHex>
+                          <Color>D2FF00</Color>
+                          <GroupHeader>1</GroupHeader>
+                          <Address>+0290</Address>
+                          <Offsets>
+                            <Offset>0</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337169437</ID>
+                          <Description>"isInDropPod"</Description>
+                          <Color>104FED</Color>
+                          <VariableType>Byte</VariableType>
+                          <Address>+0298</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337169438</ID>
+                          <Description>"primaryTriggerDown"</Description>
+                          <Color>104FED</Color>
+                          <VariableType>Byte</VariableType>
+                          <Address>+0299</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337169439</ID>
+                          <Description>"&lt;RawFacingVector&gt;k__BackingField"</Description>
+                          <Color>104FED</Color>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>+029C</Address>
+                        </CheatEntry>
+                      </CheatEntries>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337169343</ID>
+                      <Description>"targetPointer"</Description>
+                      <Options moHideChildren="1"/>
+                      <ShowAsHex>1</ShowAsHex>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <Color>D2FF00</Color>
+                      <GroupHeader>1</GroupHeader>
+                      <Address>+targetPointer_Offset</Address>
+                      <Offsets>
+                        <Offset>0</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337169344</ID>
+                      <Description>"runSettingsManager"</Description>
+                      <Options moHideChildren="1"/>
+                      <ShowAsHex>1</ShowAsHex>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <Color>D2FF00</Color>
+                      <GroupHeader>1</GroupHeader>
+                      <Address>+runSettingsManager_Offset</Address>
+                      <Offsets>
+                        <Offset>0</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337169345</ID>
+                      <Description>"saveDataManager"</Description>
+                      <Options moHideChildren="1"/>
+                      <ShowAsHex>1</ShowAsHex>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <Color>D2FF00</Color>
+                      <GroupHeader>1</GroupHeader>
+                      <Address>+saveDataManager2_Offset</Address>
+                      <Offsets>
+                        <Offset>0</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337169346</ID>
+                      <Description>"dropRateHandler"</Description>
+                      <Options moHideChildren="1"/>
+                      <ShowAsHex>1</ShowAsHex>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <Color>D2FF00</Color>
+                      <GroupHeader>1</GroupHeader>
+                      <Address>+dropRateHandler_Offset</Address>
+                      <Offsets>
+                        <Offset>0</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337169347</ID>
+                      <Description>"runStateManager"</Description>
+                      <Options moHideChildren="1"/>
+                      <ShowAsHex>1</ShowAsHex>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <Color>D2FF00</Color>
+                      <GroupHeader>1</GroupHeader>
+                      <Address>+runStateManager_Offset</Address>
+                      <Offsets>
+                        <Offset>0</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>1337169306</ID>
+                  <Description>"dropRateHandler"</Description>
+                  <Options moHideChildren="1"/>
+                  <ShowAsHex>1</ShowAsHex>
+                  <Color>D2FF00</Color>
+                  <GroupHeader>1</GroupHeader>
+                  <Address>+00D0</Address>
+                  <Offsets>
+                    <Offset>0</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>1337169307</ID>
+                  <Description>"statSettingCollection"</Description>
+                  <Options moHideChildren="1"/>
+                  <ShowAsHex>1</ShowAsHex>
+                  <Color>D2FF00</Color>
+                  <GroupHeader>1</GroupHeader>
+                  <Address>+00D8</Address>
+                  <Offsets>
+                    <Offset>0</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>1337169308</ID>
+                  <Description>"buildEnvSettings"</Description>
+                  <Options moHideChildren="1"/>
+                  <ShowAsHex>1</ShowAsHex>
+                  <Color>D2FF00</Color>
+                  <GroupHeader>1</GroupHeader>
+                  <Address>+00E0</Address>
+                  <Offsets>
+                    <Offset>0</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>1337169309</ID>
+                  <Description>"uiScale"</Description>
+                  <Color>104FED</Color>
+                  <VariableType>Float</VariableType>
+                  <Address>+00E8</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>1337169310</ID>
+                  <Description>"currentPopup"</Description>
+                  <Options moHideChildren="1"/>
+                  <ShowAsHex>1</ShowAsHex>
+                  <Color>D2FF00</Color>
+                  <GroupHeader>1</GroupHeader>
+                  <Address>+00F0</Address>
+                  <Offsets>
+                    <Offset>0</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>1337169311</ID>
+                  <Description>"maxAspect"</Description>
+                  <Color>104FED</Color>
+                  <VariableType>Float</VariableType>
+                  <Address>+00F8</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>1337169312</ID>
+                  <Description>"minAspect"</Description>
+                  <Color>104FED</Color>
+                  <VariableType>Float</VariableType>
+                  <Address>+00FC</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>1337169313</ID>
+                  <Description>"screenWidth"</Description>
+                  <Color>104FED</Color>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>+0100</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>1337169314</ID>
+                  <Description>"screenHeight"</Description>
+                  <Color>104FED</Color>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>+0104</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>1337169315</ID>
+                  <Description>"audioShowLevelUp"</Description>
+                  <Options moHideChildren="1"/>
+                  <ShowAsHex>1</ShowAsHex>
+                  <Color>D2FF00</Color>
+                  <GroupHeader>1</GroupHeader>
+                  <Address>+0108</Address>
+                  <Offsets>
+                    <Offset>0</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>1337169316</ID>
+                  <Description>"inputLegend"</Description>
+                  <Options moHideChildren="1"/>
+                  <ShowAsHex>1</ShowAsHex>
+                  <Color>D2FF00</Color>
+                  <GroupHeader>1</GroupHeader>
+                  <Address>+0110</Address>
+                  <Offsets>
+                    <Offset>0</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>1337169317</ID>
+                  <Description>"uiCamera"</Description>
+                  <Options moHideChildren="1"/>
+                  <ShowAsHex>1</ShowAsHex>
+                  <Color>D2FF00</Color>
+                  <GroupHeader>1</GroupHeader>
+                  <Address>+0118</Address>
+                  <Offsets>
+                    <Offset>0</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>1337169318</ID>
+                  <Description>"uiModeValid"</Description>
+                  <Color>104FED</Color>
+                  <VariableType>Byte</VariableType>
+                  <Address>+0120</Address>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols>
+    <SymbolEntry>
+      <Name>TeleportToCoords</Name>
+      <Address>177990A0000</Address>
+    </SymbolEntry>
+  </UserdefinedSymbols>
+  <LuaScript>openProcess('cheatengine')
+MainForm.Visible = true
+MainForm.setLayeredAttributes(0x0000FE, 240, 3)
+getMainForm().color                         = 0x000000
+getMainForm().Foundlist3.Color              = 0x000000
+GetAddressList().Control[0].BackgroundColor = 0x000000
+AddressList.CheckboxColor                   = 0x0000FF
+getMainForm().Panel5.Visible    = not getMainForm().Panel5.Visible
+getMainForm().Splitter1.Visible = not getMainForm().Splitter1.Visible
+scriptColorActivated   = 0x0000FF
+scriptColorDeactivated = 0x000080
+
+function createFunction(f)
+   if f == '' or f == nil then return nil end
+   local n = assert(loadstring(f))
+   return n()
+end
+
+-- createScripts("https://cdn.discordapp.com/attachments/350754184267694081/1158988146432811109/testScript.lua", "My Test Script", 0x000080, "Script Header Name", true, false)
+function createScripts(scriptCode, scriptName, scriptColor, scriptParent, hideChildren, manualExpandCollapse)
+   local mr = AddressList.createMemoryRecord()
+   local al = AddressList
+   mr.script = getInternet().getURL(scriptCode) -- getInternet().getURL("https://cdn.discordapp.com/attachments/350754184267694081/1158988146432811109/testScript.lua")
+   mr.description = scriptName
+   mr.varType = vtAutoAssembler
+   mr.color = scriptColor
+   if scriptParent ~= false then
+      mr.Parent = al.getMemoryRecordByDescription(scriptParent)
+   end
+   if hideChildren == true and manualExpandCollapse == true then
+      mr.Options = '[moDeactivateChildrenAsWell, moHideChildren, moManualExpandCollapse]'
+   elseif hideChildren == true and manualExpandCollapse == false then
+      mr.Options = '[moDeactivateChildrenAsWell, moHideChildren]'
+   elseif hideChildren == false and manualExpandCollapse == true then
+      mr.Options = '[moDeactivateChildrenAsWell, moManualExpandCollapse]'
+   else
+      mr.Options = '[moDeactivateChildrenAsWell]'
+   end
+end
+
+-- Get Static Field Values
+function getFValues(className,offsetName,nameSpace)
+   if not nameSpace then nameSpace = '' end
+   local cid = mono_findClass(nameSpace,className)
+   local fields = mono_class_enumFields(cid,true)
+   for i = 1,#fields do
+       if fields[i].name == offsetName then
+          return mono_class_getStaticFieldValue(cid,fields[i].field)
+       end
+   end
+end
+--PlayerManager_Ptr = getFValues('PlayerManager', 'Current', 'Player')
+
+-- Get Offsets
+function getClassOffsets(className, offsetName, nameSpace)
+   if not nameSpace then nameSpace = '' end
+   local cid = mono_findClass(nameSpace, className)
+   local fields = mono_class_enumFields(cid, true)
+   for i = 1,#fields do
+       if fields[i].name == offsetName then
+          return fields[i].offset
+       end
+   end
+end
+--localPlayerAgentInLevel_Offset = getClassOffsets('PlayerManager', 'm_localPlayerAgentInLevel', 'Player')
+
+-- Get Static Field Address (Mono)
+function writeUserSymbols(classname, fieldname,symbolname)
+   local cid       = mono_findClass('',classname)
+   local theFields = mono_class_enumFields(cid,true)
+   local sf
+   for i=1,#theFields do
+       if theFields[i].isStatic and theFields[i].name == fieldname then
+          sf = mono_class_getStaticFieldAddress('',cid)
+          sf = sf + theFields[i].offset
+          registerSymbol(symbolname,getAddress(sf), true)
+       end
+   end
+end
+--writeUserSymbols('Game','isModded','isModded_Ptr')
+
+-- Get Static Field Address (IL2CPP)
+function getExStaticFieldAddress(className, OffsetName, nameSpace)
+   if not nameSpace then nameSpace = '' end
+   local cid = mono_findClass(nameSpace, className)
+   local fields = mono_class_enumFields(cid, true)
+   for i = 1,#fields do
+       if fields[i].name == OffsetName then
+          return readPointer(cid+0xB8) + fields[i].offset
+       end
+   end
+end
+--SuperWeapons_Ptr = getExStaticFieldAddress('Weapon', '&lt;SuperWeapons&gt;k__BackingField')
+
+local aobScanEx_Function = getInternet().getURL("https://cdn.discordapp.com/attachments/1154184885246902353/1157183666527682630/aobScanEx.lua?ex=6517aec5&amp;is=65165d45&amp;hm=8b2f9aa61bf3f459e6a284c88fc09d2f60e450ad2260004a28ac95af277ca14e&amp;")
+createFunction(aobScanEx_Function)
+local customPopupMessage_Function = getInternet().getURL("https://cdn.discordapp.com/attachments/1154184885246902353/1154186261108633700/customPopupMessage.lua?ex=65175338&amp;is=651601b8&amp;hm=b073e803acd55f93a5f3438cd8d91cc8a5b3d26d247924f9f8326d27899b9c43&amp;")
+createFunction(customPopupMessage_Function)
+</LuaScript>
+</CheatTable>
