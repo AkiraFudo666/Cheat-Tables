@@ -1,1 +1,256 @@
+function Form_Create_Custom_Base(Name, Caption, FormColor, MenuColor)
+    if _G[Name] then
+        _G[Name].destroy()
+        _G[Name] = nil
+    end
+
+    --< Basic Settings >--
+    local ScreenWidth = getScreenWidth()
+    local ScreenHeight = getScreenHeight()
+
+    local FORM_SCALE = getScreenDPI() / 120
+    local FORM_COLOR = FormColor or MainForm.Color
+    local FORM_MENU_COLOR = MenuColor or AddressList.List.Color
+    local MAIN_MENU_SIZE = 30 * FORM_SCALE
+    local FONT_COLOR = darkMode() and 0xFFFFFF or 0x000000
+
+    local BaseHeight = 540 * FORM_SCALE
+    local BaseWidth = BaseHeight * 1.6
+
+    local Height = BaseHeight * FORM_SCALE
+    local Width = BaseWidth * FORM_SCALE
+
+    local EdgeRounding = 30 * FORM_SCALE
+
+    local Form_Custom_Base = createForm()
+    _G[Name] = Form_Custom_Base
+
+    --< Functions and shit >--
+
+    local IS_DRAGGING = false
+    local START_X = 0
+    local START_Y = 0
+
+    local function Form_Start_Drag( Sender, Button, Shift, X, Y )
+        if Button == mbLeft then
+            IS_DRAGGING = true
+            START_X, START_Y = getMousePos()
+        end
+    end
+
+    local function Form_Drag( sender )
+        if IS_DRAGGING then
+            local x, y = getMousePos()
+            local deltaX = x - START_X
+            local deltaY = y - START_Y
+            Form_Custom_Base.Left = Form_Custom_Base.Left + deltaX
+            Form_Custom_Base.Top = Form_Custom_Base.Top + deltaY
+            START_X = x
+            START_Y = y
+        end
+    end
+
+    local function Form_End_Drag( Sender, Button, Shift, X, Y )
+        if Button == mbLeft then
+            IS_DRAGGING = false
+        end
+    end
+
+    local function Form_Use_Component_For_Drag( component )
+        component.OnMouseDown = Form_Start_Drag
+        component.OnMouseMove = Form_Drag
+        component.OnMouseUp = Form_End_Drag
+    end
+
+    local function Form_Create_Hover_Panel(Component)
+        local Hover_Panel = createPanel(Component.Parent)
+        Hover_Panel.Color = 0xFFFFFF
+        Hover_Panel.BevelInner = "bsNone"
+        Hover_Panel.BevelOuter = "bsNone"
+        Hover_Panel.setLayeredAttributes(nil, 1, 0x3)
+        Hover_Panel.BringToFront()
+        Hover_Panel.Top = Component.Top
+        Hover_Panel.Left = Component.Left
+        Hover_Panel.Width = Component.Width
+        Hover_Panel.Height = Component.Height
+        Hover_Panel.Anchors = "[akTop,akLeft,akRight,akBottom]"
+        Hover_Panel.AnchorSideTop.Side = asrTop
+        Hover_Panel.AnchorSideBottom.Side = asrBottom
+        Hover_Panel.AnchorSideRight.Side = asrRight
+        Hover_Panel.AnchorSideLeft.Side = asrLeft
+        Hover_Panel.AnchorSideLeft.Control = Component
+        Hover_Panel.AnchorSideTop.Control = Component
+        Hover_Panel.AnchorSideBottom.Control = Component
+        Hover_Panel.AnchorSideRight.Control = Component
+        return Hover_Panel
+    end
+
+    --< Form Start >--
+
+
+    GLOBAL_TICK = 0
+    local TickTimer = createTimer( Form_Custom_Base )
+    TickTimer.Interval = 10
+    TickTimer.OnTimer = function( self )
+        if Form_Custom_Base then
+            GLOBAL_TICK = GLOBAL_TICK + 1
+            if tonumber(GLOBAL_TICK) > 10000 then
+                GLOBAL_TICK = 0
+            end
+        else
+            self.destroy()
+            TickTimer = nil
+        end
+    end
+
+    Form_Custom_Base.Name = 'Form_Custom_Base'
+    Form_Custom_Base.Caption = nil
+
+    Form_Custom_Base.BorderStyle = bsNone
+    Form_Custom_Base.Color = 0x69420
+    Form_Custom_Base.setLayeredAttributes(0x69420, 1, 0x1)
+
+
+    Form_Custom_Base.Width = Width
+    Form_Custom_Base.Height = Height
+
+    Form_Custom_Base.OnPaint = function(Sender)
+        local Canvas = Sender.Canvas
+        Canvas.Brush.Color = FORM_COLOR
+        Canvas.Pen.Color = FORM_COLOR
+        Canvas.Pen.Width = 1
+        Canvas.RoundRect(0, 0, Sender.Width, Sender.Height, EdgeRounding, EdgeRounding)
+    end
+
+    local Form_MainMenu = createPanel(Form_Custom_Base)
+
+    Form_Use_Component_For_Drag(Form_MainMenu)
+
+    Form_MainMenu.Name = "Form_MainMenu"
+    Form_MainMenu.Caption = nil
+    Form_MainMenu.Color = 0x69420
+    Form_MainMenu.BevelInner = "bsNone"
+    Form_MainMenu.BevelOuter = "bsNone"
+
+    Form_MainMenu.Width = Width
+    Form_MainMenu.Height = MAIN_MENU_SIZE
+
+    Form_MainMenu.OnPaint = function( Sender )
+        local Canvas = Sender.Canvas
+        Canvas.Brush.Color = FORM_MENU_COLOR
+        Canvas.Pen.Color = FORM_MENU_COLOR
+        Canvas.Pen.Width = 1
+        Canvas.RoundRect(0, 0, Sender.Width, Sender.Height, EdgeRounding, EdgeRounding)
+        Canvas.Rect(0, MAIN_MENU_SIZE // 2, Sender.Width, Sender.Height)
+    end
+
+    local Form_MainMenu_Text = createLabel( Form_MainMenu )
+
+    Form_Use_Component_For_Drag( Form_MainMenu_Text )
+
+    Form_MainMenu_Text.Name = "Form_MainMenu_Text"
+    Form_MainMenu_Text.Caption = Caption or 'Unnamed Form'
+
+    Form_MainMenu_Text.Font.Size = 9
+    Form_MainMenu_Text.Font.Color = FONT_COLOR
+    Form_MainMenu_Text.Font.Name = "Segoe UI"
+
+    local Mid_Height = (Form_MainMenu.Height - Form_MainMenu_Text.Height) >> 1
+    Form_MainMenu_Text.Left = Mid_Height << 1
+    Form_MainMenu_Text.Top = Mid_Height
+
+    local Form_MainMenu_CloseButton = createPanel(Form_MainMenu)
+    Form_MainMenu_CloseButton.Name = "Form_MainMenu_CloseButton"
+    Form_MainMenu_CloseButton.Caption = nil
+    Form_MainMenu_CloseButton.Color = FORM_MENU_COLOR
+    Form_MainMenu_CloseButton.BevelInner = "bsNone"
+    Form_MainMenu_CloseButton.BevelOuter = "bsNone"
+
+    local CloseButtonScale = MAIN_MENU_SIZE * 0.80
+    Form_MainMenu_CloseButton.Width = CloseButtonScale
+    Form_MainMenu_CloseButton.Height = CloseButtonScale
+
+    Form_MainMenu_CloseButton.Left = Form_MainMenu.Width - Form_MainMenu_CloseButton.Width - (EdgeRounding >> 1)
+    Form_MainMenu_CloseButton.Top = (Form_MainMenu.Height - Form_MainMenu_CloseButton.Height) >> 1
+
+    local Form_MainMenu_CloseButton_X = createPaintBox(Form_MainMenu_CloseButton)
+    Form_MainMenu_CloseButton_X.Name = "Form_MainMenu_CloseButton_X"
+    Form_MainMenu_CloseButton_X.Caption = nil
+
+    local X_Size = math.floor(Form_MainMenu_CloseButton.Width * 0.5)
+
+    local function Set_X_Size(Size)
+        Form_MainMenu_CloseButton_X.Width = Size
+        Form_MainMenu_CloseButton_X.Height = Size
+        Form_MainMenu_CloseButton_X.Left = (Form_MainMenu_CloseButton_X.Parent.Width - Form_MainMenu_CloseButton_X.Width) / 2
+        Form_MainMenu_CloseButton_X.Top = (Form_MainMenu_CloseButton_X.Parent.Height - Form_MainMenu_CloseButton_X.Height) / 2
+    end
+
+    Set_X_Size(X_Size)
+
+    local XButtonColor = {
+        Default = FONT_COLOR,
+        OnHover = 0x2222FF
+    }
+
+    local X_Color = XButtonColor.Default
+    local X_Thickness = 2 * FORM_SCALE
+
+    Form_MainMenu_CloseButton_X.OnPaint = function(sender)
+        local canvas = sender.Canvas
+        local width, height = sender.Width, sender.Height
+        canvas.Pen.Color = X_Color
+        canvas.Pen.Width = X_Thickness
+        canvas.MoveTo(0, 0)
+        canvas.LineTo(width, height)
+        canvas.MoveTo(0, height)
+        canvas.LineTo(width, 0)
+    end
+
+    local Form_MainMenu_CloseButton_X_HoverArea = Form_Create_Hover_Panel( Form_MainMenu_CloseButton )
+    Form_MainMenu_CloseButton_X_HoverArea.Name = "Form_MainMenu_CloseButton_X_HoverArea"
+    Form_MainMenu_CloseButton_X_HoverArea.Caption = nil
+
+    Form_MainMenu_CloseButton_X_HoverArea.OnClick = function()
+        createTimer(
+            10,
+            function()
+                Form_Custom_Base.destroy()
+                Form_Custom_Base = nil
+            end
+        )
+    end
+
+    Form_MainMenu_CloseButton_X_HoverArea.OnMouseEnter = function( sender )
+        if Form_Custom_Base then
+            Set_X_Size( X_Size * 1.3 )
+            X_Color = XButtonColor.OnHover
+        end
+    end
+
+    Form_MainMenu_CloseButton_X_HoverArea.OnMouseLeave = function( sender )
+        if Form_Custom_Base then
+            Set_X_Size( X_Size )
+            X_Color = XButtonColor.Default
+        end
+    end
+
+    local x = createMemo(Form_Custom_Base)
+    x.Width = Form_Custom_Base.Width / 100 * 90
+    x.Height = Form_Custom_Base.Height / 100 * 90
+    x.Top = Form_Custom_Base.Top + Form_MainMenu_Text.Height + 10
+    x.Left = Form_Custom_Base.Left + Form_MainMenu_Text.Height + 10
+    x.Lines.Text = 'Subscripe to me at Patreon to support me and gain access to many more tables!'
+
+    --Form_Custom_Base.centerScreen()
+    Form_Custom_Base.Show()
+    return Form_Custom_Base
+end
+registerLuaFunctionHighlight('Form_Create_Custom_Base')
+
+Form_Create_Custom_Base('Advertisement', 'Patreon')
+
+--CE_F.createImageBehindComponent(Form_Create_Custom_Base( 'Advertisement', 'Patreon'), 'C:\\Users\\Ryo Asuka\\Pictures\\Akira.jpg', 240, true)
+
+
 
