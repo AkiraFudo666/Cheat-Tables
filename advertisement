@@ -242,10 +242,10 @@ function Form_Create_Custom_Base(Name, Caption, FormColor, MenuColor)
     x.Left = Form_Custom_Base.Left + Form_MainMenu_Text.Height + 10
     x.Lines.Text = [[Subscribe at Patreon to support me and gain access to many more tables!
 
-    Patreon: https://www.patreon.com/Akira_Fudo
+Patreon: https://www.patreon.com/Akira_Fudo
 
-    Discord: https://discord.gg/SQvYfBa
-    ]]
+Discord: https://discord.gg/SQvYfBa
+]]
 
     --Form_Custom_Base.centerScreen()
     Form_Custom_Base.Show()
