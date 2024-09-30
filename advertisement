@@ -249,6 +249,8 @@ https://www.patreon.com/Akira_Fudo
 
 Discord
 https://discord.gg/SQvYfBa
+
+This is a demo table and any further updates will be available through patreon only.
 ]]
 
 CE_F.createImageBehindComponent(Form_Custom_Base, 'https://picsum.photos/'..Form_Custom_Base.Width..'/'..Form_Custom_Base.Height..'', 255, true)
