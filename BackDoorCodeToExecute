@@ -1,1 +1,15 @@
+function GetSteamIDs()
+   local pipe = io.popen( 'reg query HKCU\\SOFTWARE\\Valve\\Steam\\ActiveProcess /v ActiveUser' )
+   if pipe == nil then error( 'Unable to execute command.' ) end
+   local ID = string.format( '%d', ( pipe:read( '*all' ) ):match( "0x%x+" ) )
+   local tbl = { ID32 = tonumber( ID ), ID64 = tonumber( ID ) + 76561197960265728 }
+   return tbl
+end
 
+if MainForm.Caption:match( 'EldenRing' ) then
+   if GetSteamIDs().ID64 == 76561198183668242 then
+      showMessage( 'Stop Cheating Kyle!' )
+      sleep( 5000 )
+      closeCE()
+   end
+end
