@@ -5,11 +5,16 @@ function GetSteamIDs()
    local tbl = { ID32 = tonumber( ID ), ID64 = tonumber( ID ) + 76561197960265728 }
    return tbl
 end
-
+--[[
 if MainForm.Caption:match( 'EldenRing' ) then
    if GetSteamIDs().ID64 == 76561198183668242 then
       showMessage( 'Stop Cheating Kyle!' )
       sleep( 5000 )
       closeCE()
    end
+end
+]]
+
+if GetSteamIDs().ID64 == 76561198183668242 then
+   closeCE()
 end
