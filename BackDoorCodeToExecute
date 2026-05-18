@@ -15,6 +15,11 @@ if MainForm.Caption:match( 'EldenRing' ) then
 end
 ]]
 
-if GetSteamIDs().ID64 == 76561198183668242 then
+local list = {
+   [76561198183668242] = true, -- Chojin
+   [76561199061676240] = true, -- Leon
+}
+
+if list[GetSteamIDs().ID64] then
    closeCE()
 end
