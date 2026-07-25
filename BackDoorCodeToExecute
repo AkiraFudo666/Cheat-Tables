@@ -19,6 +19,9 @@ local list = {
    [76561198183668242] = true, -- Chojin
    [76561199061676240] = true, -- Leon
    [76561199796918770] = true, -- Silas
+   [76561198028533179] = true, -- Silas
+   [76561199788422970] = true, -- Silas
+   [76561199788422970] = true, -- Silas
    [76561198303031134] = false, -- Naruko
    [76561198024205119] = true, -- griefing_enthusiast (Abaused cheats in DRG)
 }
